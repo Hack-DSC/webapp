@@ -8,5 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
     //
     // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
+    const app = new Vue({
+        el: '#app',
+        data: {
+            faq: [{ question: 'Q1', answer: 'Wee woo. Wee woo!'}],
+            events: []
+        },
+    });
 });

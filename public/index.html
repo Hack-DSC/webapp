@@ -9,6 +9,7 @@
     <script defer src="/__/firebase/7.13.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/7.13.1/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/7.13.1/firebase-analytics.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
@@ -21,75 +22,98 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <header>
-      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-          <a class="navbar-brand" href="#">Hack DSC</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#faq">FAQ</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#whats-a-dsc">What's a DSC?</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#contact">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#signup">Signup</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-
-
-
-    <main class="container">
-      <div id="landing" class="mb-5">
-        <div class="row align-items-center">
-          <div class="col">
-            <h1 class="display-1">Hack DSC</h1>
-            <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente incidunt laudantium nam, nesciunt pariatur ea alias atque odio officiis repudiandae!</p>
-          </div>
-          <div class="col-5">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="..."></iframe>
+    <div id="app">
+      <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+          <div class="container">
+            <a class="navbar-brand" href="#">Hack DSC</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#faq">FAQ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#whats-a-dsc">What's a DSC?</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#signup">Signup</a>
+                </li>
+              </ul>
             </div>
           </div>
+        </nav>
+      </header>
+
+
+      <main>
+        <section>
+          <div id="landing" class="container mb-5">
+            <div class="row align-items-center">
+              <div class="col">
+                <h1 class="display-1">Hack DSC</h1>
+                <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente incidunt laudantium nam, nesciunt pariatur ea alias atque odio officiis repudiandae!</p>
+              </div>
+              <div class="col-5">
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="..."></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="whats-a-dsc">
+          <div class="container mb-5">
+            <h1>What's a DSC?</h1>
+          </div>
+        </section>
+
+        <section id="faq">
+          <div class="container mb-5">
+            <h1>FAQ</h1>
+  
+            <div class="row">
+              <div v-for="({question, answer}) in faq" class="col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ question }}</h5>
+                    <p class="card-text">{{ answer }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <div class="container py-5">
+            <h1>Contact</h1>
+          </div>
+        </section>
+      </main>
+
+
+      <footer class="footer text-white bg-primary text-center p-5 mt-auto">
+        <div class="container">
+          <div class="row">
+            <div class="col"><p>Copyright © Hack DSC 2020</p></div>
+            <div class="col"><p>Powered by Google Firebase</p></div>
+            <div class="col"><p>Developed by DSC Leads</p></div>
+          </div>
         </div>
-      </div>
-      <div id="whats-a-dsc">
-        <h1>What's a DSC?</h1>
-      </div>
-      <div id="faq">
-        <h1>FAQ</h1>
-      </div>
-      <div id="contact">
-        <h1>Contact</h1>
-      </div>
-    </main>
+      </footer>
+    </div>
 
-
-
-
-    <footer class="footer text-white bg-primary text-center p-5 mt-auto">
-      <div class="container">
-        <div class="row">
-          <div class="col"><p>Copyright © Hack DSC 2020</p></div>
-          <div class="col"><p>Powered by Google Firebase</p></div>
-          <div class="col"><p>Developed by DSC Leads</p></div>
-        </div>
-      </div>
-    </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="/js/script.js"></script>
+    <script src="/js/particles.js"></script>
   </body>
 </html>
