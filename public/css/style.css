@@ -1,0 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
+#landing .row {
+    min-height: 100vh;
+}
