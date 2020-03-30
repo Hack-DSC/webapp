@@ -11,7 +11,36 @@ document.addEventListener('DOMContentLoaded', function () {
     const app = new Vue({
         el: '#app',
         data: {
-            faq: [{ question: 'Q1', answer: 'Wee woo. Wee woo!'}],
+            faq: [
+                {
+                    question: 'What\'s a Hackathon?',
+                    answer: '[answer here]'
+                },
+                {
+                    question: 'Who can join?',
+                    answer: 'Any post-secondary/collegiate student from any background'
+                },
+                {
+                    question: 'What platforms are we using?',
+                    answer: 'Discord & Youtube Live'
+                },
+                {
+                    question: 'Can I work on things in advance?',
+                    answer: 'See early bird track'
+                },
+                {
+                    question: 'How much does the event cost?',
+                    answer: 'Free'
+                },
+                {
+                    question: 'How will winners receive their prizes?',
+                    answer: 'Shipped Directly'
+                },
+                {
+                    question: 'Do I need to be in a DSC?',
+                    answer: 'Nope! But we encourage you to join one or start your own!'
+                }
+            ],
             events: [],
             calendar: null
         },
