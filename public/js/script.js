@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
             events: firebase.firestore().collection('events')
         },
         mounted() {
-
             firebase.auth().onAuthStateChanged(user => {
                 this.user = user
                 if (user) {
@@ -54,8 +53,18 @@ document.addEventListener('DOMContentLoaded', function () {
             })
 
             this.calendar.render()
+
+            setInterval(this.updateCountDown, 1000)
+            this.updateCountDown()
         },
         methods: {
+            updateCountDown () {
+                let distance = dayjs('2020-04-27T01:00:00.000Z').diff(new Date(), 'milliseconds')
+                this.countdown.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                this.countdown.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                this.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                this.countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            },
             async startGoogleAuth() {
                 try {
                     const result = await firebase.auth().signInWithPopup(provider)
