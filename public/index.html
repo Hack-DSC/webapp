@@ -22,7 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
   </head>
-  <body>
+  <body data-spy="scroll" data-target=".navbar" data-offset="50">
     <div id="app">
       <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light ml-auto">
@@ -33,17 +33,17 @@
               <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto">
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav ml-auto" id="navbarSupportedContent">
                 <li class="nav-item">
                   <a class="nav-link" href="#whats-hack-dsc">What is Hack DSC?</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="#whats-a-dsc">What's a DSC?</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#whats-the-solution-challenge">What's the Solution Challenge?</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <a class="nav-link" href="#faq">FAQ</a>
                 </li>
@@ -88,19 +88,29 @@
         <section id="whats-hack-dsc" class="p-4">
           <div class="container">
             <div class="card p-5">
-              <h1>What's Hack DSC?</h1>
+              <h1>What is Hack DSC?</h1>
               <p>Hack DSC is a virtual hackathon that links DSCs across North America.  The goal of Hack DSC is to get more submissions for the Solution Challenge.</p>
               
+              <h4>What's a Developer Student Club?</h4>
+              <p class="text-muted"><q>Developer Student Clubs bridge the gap between <strong class="text-primary">Theory</strong> and <strong class="text-success">Practical Application</strong> for student developers.</q></p>
+              <p>Developer Student Clubs (DSC) is program presented by Google Developers.  DSCs are university based community groups for students.  Students from all undergraduate or graduate programs with an interest in growing as a developer are welcome.  By joining a DSC, students grow their knowledge in a peer-to-peer learning environment and build solutions for local businesses and their community.</p>
+
+              <h4>What's the Solution Challenge?</h4>
+              <p>The Solution Challenge is an annual contest presented by Developer Student Clubs (DSC) that invites students to develop solutions for local community problems using one or more Google products or platforms.  10 winning teams (up to 4 members) from across the globe will be identified and receive prizes including but, not limited to:</p>
+              <ul>
+                <li>A curated experience with Googlers to celebrate the winning solutions</li>
+                <li>Winning teams will be featured on Google channels</li>
+              </ul>
+              <p>Submissions will be accepted between March 15-April 30, 2020</p>
             </div>
           </div>
         </section>
 
-        <section id="whats-a-dsc" class="p-5">
+        <!-- <section id="whats-a-dsc" class="p-5">
           <div class="container">
             <div class="card p-5">
               <h1>What's a Developer Student Club?</h1>
-              <p><q>Developer Student Clubs bridge the gap between Theory and Practical Application for student developers.</q></p>
-              <p>Developer Student Clubs (DSC) is program presented by Google Developers.  DSCs are university based community groups for students.  Students from all undergraduate or graduate programs with an interest in growing as a developer are welcome.  By joining a DSC, students grow their knowledge in a peer-to-peer learning environment and build solutions for local businesses and their community.</p>
+              
               <a class="btn btn-success" target="_blank" href="https://developers.google.com/community/dsc">More Info</a>
             </div>
           </div>
@@ -117,20 +127,28 @@
               <p>Submissions will be accepted between March 15-April 30, 2020</p>
             </div>
           </div>
-        </section>
-
+        </section> -->
+        
         <section id="faq" class="p-5">
           <div class="container mb-5">
-            <h1>FAQ</h1>
+            <div class="card p-5">
+              <h1>FAQ</h1>
+              <div class="accordion" id="accordionExample">
 
-            <div class="row">
-              <div v-for="({question, answer}) in faq" class="col-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ question }}</h5>
-                    <p class="card-text">{{ answer }}</p>
+                <div class="card" v-for="({question,answer}, index) in faq" :key="index">
+                  <div class="card-header" id="headingOne">
+                    <p class="mb-0" data-toggle="collapse" :data-target="'#collapse-' + index">
+                      {{ question }}
+                    </p>
+                  </div>
+              
+                  <div :id="'collapse-' + index" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                      {{ answer }}
+                    </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
