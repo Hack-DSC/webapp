@@ -47,3 +47,8 @@ body {
 footer {
     background-color: #303c42;
 }
+
+.fc-time-grid .fc-slats td {
+    height: 3em;
+    border-bottom: 0;
+}
