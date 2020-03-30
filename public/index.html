@@ -96,7 +96,6 @@
           </div>
           <!-- <div class="col-12">
           <p>Description here</p>
-
           </div> -->
         </div>
 
@@ -186,12 +185,14 @@
               <div class="card p-5">
                 <h1>FAQ</h1>
 
-                <div v-for="({question,answer}, index) in faqs" :key="index">
-                  <h4 class="mb-0" data-toggle="collapse" :data-target="'#collapse-' + index">
-                    {{ question }}
-                  </h4>
+                <details v-for="({question,answer}, index) in faqs" :key="index" class="mb-1">
+                  <summary>
+                    <h4 class="mb-0 d-inline-block" data-toggle="collapse" :data-target="'#collapse-' + index">
+                      {{ question }}
+                    </h4>
+                  </summary>
                   <p>{{ answer }}</p>
-                </div>
+                </details>
               </div>
             </div>
           </section>
