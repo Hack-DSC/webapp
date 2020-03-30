@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
             calendar: null
         },
         firestore: {
-            faqs: firebase.firestore().collection('faqs')
+            faqs: firebase.firestore().collection('faqs'),
+            events: firebase.firestore().collection('events')
         },
         mounted() {
 
@@ -38,18 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
             this.calendar = new FullCalendar.Calendar(this.$refs.calendar, {
                 plugins: ['dayGrid', 'timeGrid'],
                 defaultView: 'timeGrid',
-                events: [
-                    {
-                        title: 'Test Event',
-                        start: dayjs('2020-04-24T13:00:00.000Z').toDate(),
-                        end: dayjs('2020-04-24T16:00:00.000Z').toDate()
-                    },
-                    {
-                        title: 'Test Event',
-                        start: dayjs('2020-04-25T16:00:00.000Z').toDate(),
-                        end: dayjs('2020-04-25T20:00:00.000Z').toDate()
-                    }
-                ],
+                events: (fetchInfo, successCallback, failureCallback) => successCallback(this.convertedEvents),
                 header: {
                     left: '',
                     center: '',
@@ -88,6 +78,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     var credential = error.credential;
                     // ...
                 });
+            }
+        },
+        watch: {
+            events () {
+                this.calendar.refetchEvents()
+            }
+        },
+        computed: {
+            convertedEvents () {
+                return this.events.map(event => ({
+                    title: event.title,
+                    start: event.start.toDate(),
+                    end: event.end.toDate(),
+                }))
             }
         }
     });
