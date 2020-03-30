@@ -1,24 +1,23 @@
 html {
     scroll-behavior: smooth;
+    font-size: 1.3em;
+}
+
+footer {
+    font-size: 0.7em;
 }
 
 .container {
-    max-width: 850px;
-}
-
-/* section {
-    min-height: 100vh;
-} */
-
-section  .container {
-    /* padding-top: 6em; */
+    max-width: 900px;
 }
 
 #landing .row {
     min-height: 100vh;
+    
 }
 
 #landing {
+    max-width: 1100px;
     position: relative;
     /* text-shadow: 0px 0px 10px white; */
 }

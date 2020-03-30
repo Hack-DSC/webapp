@@ -13,13 +13,13 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Product+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
@@ -27,7 +27,7 @@
       <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light ml-auto">
             <a class="navbar-brand" href="#">
-              <img src="/img/hackdsc.png" height="30" alt="HackDSC Logo">
+              <img src="/img/hackdsc.png" height="20" alt="HackDSC Logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -69,46 +69,53 @@
 
 
       <main>
-        <section>
-          <div id="landing" class="container mb-5">
-            <div class="row align-items-center">
-              <div class="col">
-                <h1 class="display-1">Hack DSC</h1>
-                <p class="lead">Developer Student Clubs Virtual Hackathon</p>
-                <p class="lead">4/24-4/26</p>
-                <p class="lead">
-                  A Premier Virtual Hackathon Powered by North America's Developer Student Clubs
-                  <a class="btn btn-primary btn-lg" href="#">Register</a>
-                </p>
-              </div>
+        <div id="landing" class="mx-auto px-5">
+          <div class="row align-items-center">
+            <div class="col-7">
+              <img src="/img/hackdsc.png" width="100%" alt="HackDSC Logo">
+            </div>
+            <div class="col text-center pt-5">
+              <p class="lead">
+                A Premier Virtual Hackathon Powered by North America's Developer Student Clubs
+              </p>
+              <a class="btn btn-primary btn-lg" href="#">Register for 4/24-4/26</a>
+            </div>
+          </div>
+          
+
+        </div>
+        <div class="bg-light">
+        <section id="whats-hack-dsc" class="p-4">
+          <div class="container">
+            <div class="card p-5">
+              <h1>What's Hack DSC?</h1>
+              <p>Hack DSC is a virtual hackathon that links DSCs across North America.  The goal of Hack DSC is to get more submissions for the Solution Challenge.</p>
               
             </div>
           </div>
         </section>
 
-        <section id="whats-hack-dsc" class="bg-light p-5">
-          <div class="container">
-            <h1>What's Hack DSC?</h1>
-            <p>Hack DSC is a virtual hackathon that links DSCs across North America.  The goal of Hack DSC is to get more submissions for the Solution Challenge.</p>
-          </div>
-        </section>
-
         <section id="whats-a-dsc" class="p-5">
-          <div class="container mb-5">
-            <h1>What's a Developer Student Club?</h1>
-            <p><q>Developer Student Clubs bridge the gap between Theory and Practical Application for student developers.</q></p>
-            <p>Developer Student Clubs (DSC) is program presented by Google Developers.  DSCs are university based community groups for students.  Students from all undergraduate or graduate programs with an interest in growing as a developer are welcome.  By joining a DSC, students grow their knowledge in a peer-to-peer learning environment and build solutions for local businesses and their community.</p>
+          <div class="container">
+            <div class="card p-5">
+              <h1>What's a Developer Student Club?</h1>
+              <p><q>Developer Student Clubs bridge the gap between Theory and Practical Application for student developers.</q></p>
+              <p>Developer Student Clubs (DSC) is program presented by Google Developers.  DSCs are university based community groups for students.  Students from all undergraduate or graduate programs with an interest in growing as a developer are welcome.  By joining a DSC, students grow their knowledge in a peer-to-peer learning environment and build solutions for local businesses and their community.</p>
+              <a class="btn btn-success" target="_blank" href="https://developers.google.com/community/dsc">More Info</a>
+            </div>
           </div>
         </section>
-        <section id="whats-the-solution-challenge" class="bg-light p-5">
+        <section id="whats-the-solution-challenge" class="p-5">
           <div class="container mb-5">
-            <h1>What's the Solution Challenge?</h1>
-            <p>The Solution Challenge is an annual contest presented by Developer Student Clubs (DSC) that invites students to develop solutions for local community problems using one or more Google products or platforms.  10 winning teams (up to 4 members) from across the globe will be identified and receive prizes including but, not limited to:</p>
-            <ul>
-              <li>A curated experience with Googlers to celebrate the winning solutions</li>
-              <li>Winning teams will be featured on Google channels</li>
-            </ul>
-            <p>Submissions will be accepted between March 15-April 30, 2020</p>
+            <div class="card p-5">
+              <h1>What's the Solution Challenge?</h1>
+              <p>The Solution Challenge is an annual contest presented by Developer Student Clubs (DSC) that invites students to develop solutions for local community problems using one or more Google products or platforms.  10 winning teams (up to 4 members) from across the globe will be identified and receive prizes including but, not limited to:</p>
+              <ul>
+                <li>A curated experience with Googlers to celebrate the winning solutions</li>
+                <li>Winning teams will be featured on Google channels</li>
+              </ul>
+              <p>Submissions will be accepted between March 15-April 30, 2020</p>
+            </div>
           </div>
         </section>
 
@@ -129,7 +136,7 @@
           </div>
         </section>
 
-        <section id="schedule" class="bg-light p-5">
+        <section id="schedule" class="p-5">
           <div class="container mb-5">
             <h1>Schedule</h1>
             <h2>Coming Soon</h2>
@@ -143,7 +150,7 @@
           </div>
         </section>
 
-        <section id="team" class="bg-light p-5">
+        <section id="team" class="p-5">
           <div class="container mb-5">
             <h1>Team</h1>
           </div>
@@ -153,13 +160,18 @@
             <h1>Contact</h1>
           </div>
         </section>
+      </div>
       </main>
       <footer class="footer text-white text-center p-5 mt-auto">
         <div class="container">
-          <div class="row">
-            <div class="col"><p>Copyright © Hack DSC 2020</p></div>
-            <div class="col"><p>Powered by Google Firebase</p></div>
-            <div class="col"><p>Developed by DSC Leads</p></div>
+          <div class="row align-items-center">
+            <div class="col"><span>Copyright © Hack DSC 2020</span></div>
+            <div class="col">
+              <a href="#">
+                <img src="/img/hackdsc_white.png" alt="White variation of Hack DSC" height="40">
+              </a>
+            </div>
+            <div class="col"><span>Developed with <i class="fas fa-heart"></i> by the Hack DSC team</span></div>
           </div>
         </div>
       </footer>
