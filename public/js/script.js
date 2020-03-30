@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const app = new Vue({
         el: '#app',
         data: {
+            countdown: {
+                days: 0,
+                hours: 0,
+                minutes: 0
+            },
             user: null,
             faqs: [],
             events: [],
