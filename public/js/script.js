@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             },
             openRegistrationModal () {
-                $('#registration-modal').modal('show')
+                // $('#registration-modal').modal('show')
             }
         },
         watch: {

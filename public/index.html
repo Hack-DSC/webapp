@@ -94,41 +94,68 @@
               </h1>
             </div>
           </div>
-          <div class="col-12">
-          <p>test</p>
+          <!-- <div class="col-12">
+          <p>Description here</p>
 
-          </div>
+          </div> -->
         </div>
 
         <!-- Registration modal -->
-        <!-- <div id="registration-modal" class="modal fade" data-backdrop="static" tabindex="-1">
+        <div id="registration-modal" class="modal fade" data-backdrop="static" tabindex="-1">
           <div v-if="loggedIn" class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Finish Registration</h5>
               </div>
               <div class="modal-body">
-                <form>
+                <form id="registration-form" @submit.prevent="finishRegistration">
                   <div class="form-group">
                     <label for="registration-name">Your Name</label>
-                    <input id="registration-name" name="displayName" type="text" class="form-control" :value="user.displayName">
+                    <input id="registration-name" name="displayName" type="text" class="form-control" :value="user.displayName" placeholder="What should we call you?" required>
                   </div>
                   <div class="form-group">
                     <label for="registration-school">Your School</label>
-                    <input id="registration-school" name="school" type="text" class="form-control">
+                    <input id="registration-school" name="school" type="text" class="form-control" placeholder="Full name please!" required>
                   </div>
                   <div class="form-group">
                     <label for="registration-school-email">Your School Email</label>
-                    <input id="registration-school-email" name="school-email" type="email" class="form-control">
+                    <input id="registration-school-email" name="school-email" type="email" class="form-control" placeholder="Use your .edu email if possible!" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="registration-grade-level">Grade Level</label>
+                    <select class="custom-select" id="registration-grade-level" name="grade-level" required>
+                      <option value="freshman">Freshman</option>
+                      <option value="sophomore">Sophomore</option>
+                      <option value="junior">Junior</option>
+                      <option value="senior">Senior</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="registration-hackathon-count">How many previous Hackathons have you participated in?</label>
+                    <select class="custom-select" id="registration-hackathon-count" name="hackathon-count" required>
+                      <option value="0">None yet!</option>
+                      <option value="1-5">1-5</option>
+                      <option value="5-10">5-10</option>
+                      <option value="10+">10+</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="registration-experience">Experience</label>
+                    <select class="custom-select" id="registration-experience" name="experience" required>
+                      <option value="none">None yet!</option>
+                      <option value="frontend">Frontend</option>
+                      <option value="backend">Backend</option>
+                      <option value="fullstack">Full Stack</option>
+                    </select>
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-success">Save</button>
+                <button class="btn btn-success" type="submit" form="registration-form">Save</button>
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
 
         <div class="bg-light">
           <section id="what-is-hack-dsc" class="p-4">
