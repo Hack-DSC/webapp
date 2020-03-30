@@ -67,13 +67,20 @@
                   <a class="nav-link" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                  <button class="btn btn-primary" type="button" @click="startGoogleAuth" :disabled="user !== null">{{ user ? 'Registered' : 'Register' }}</button>
+                  <button class="btn btn-primary" type="button" @click="startGoogleAuth" :disabled="loggedIn">{{ user ? 'Registered' : 'Register' }}</button>
                 </li>
               </ul>
             </div>
         </nav>
       </header>
 
+      <div class="card p-1" style="position: absolute; top: 140px; right:45%">
+        <span>
+          <i class="fas fa-clock"></i>
+          0 days 0 hours 0 min
+        </span>
+        
+      </div>
 
       <main>
         <div id="landing" class="mx-auto px-5">
@@ -81,117 +88,129 @@
             <div class="col-7">
               <img src="/img/hackdsc.png" width="100%" alt="HackDSC Logo">
             </div>
-            <div class="col text-center pt-5">
-              <p class="lead">
-                A Premier Virtual Hackathon Powered by North America's Developer Student Clubs
-                <br>
+            <div class="col-5 text-center pt-5">
+              <h1>
                 <b>4/24 - 4/26</b>
-              </p>
-              <button class="btn btn-primary btn-lg" href="#" @click="startGoogleAuth" :disabled="user !== null">{{ user ? `See you soon ${user.displayName}` : 'Register Now' }}</button>
+              </h1>
             </div>
           </div>
-          
+          <div class="col-12">
+          <p>test</p>
 
+          </div>
         </div>
+
+        <!-- Registration modal -->
+        <!-- <div id="registration-modal" class="modal fade" data-backdrop="static" tabindex="-1">
+          <div v-if="loggedIn" class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Finish Registration</h5>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="registration-name">Your Name</label>
+                    <input id="registration-name" name="displayName" type="text" class="form-control" :value="user.displayName">
+                  </div>
+                  <div class="form-group">
+                    <label for="registration-school">Your School</label>
+                    <input id="registration-school" name="school" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="registration-school-email">Your School Email</label>
+                    <input id="registration-school-email" name="school-email" type="email" class="form-control">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success">Save</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
         <div class="bg-light">
-        <section id="what-is-hack-dsc" class="p-4">
-          <div class="container">
-            <div class="card p-5">
-              <h1>What is Hack DSC?</h1>
-              <p>Hack DSC is a virtual hackathon that links DSCs across North America.  The goal of Hack DSC is to get more submissions for the Solution Challenge.</p>
-              
-              <h4>What's a Developer Student Club?</h4>
-              <p class="text-muted"><q>Developer Student Clubs bridge the gap between <strong class="text-primary">Theory</strong> and <strong class="text-success">Practical Application</strong> for student developers.</q></p>
-              <p>Developer Student Clubs (DSC) is program presented by Google Developers.  DSCs are university based community groups for students.  Students from all undergraduate or graduate programs with an interest in growing as a developer are welcome.  By joining a DSC, students grow their knowledge in a peer-to-peer learning environment and build solutions for local businesses and their community.</p>
+          <section id="what-is-hack-dsc" class="p-4">
+            <div class="container">
+              <div class="card p-5">
+                <h1>What is Hack DSC?</h1>
+                <p>Hack DSC is a virtual hackathon that links DSCs across North America.  The goal of Hack DSC is to get more submissions for the Solution Challenge.</p>
+                
+                <h4>What's a Developer Student Club?</h4>
+                <p class="text-muted"><q>Developer Student Clubs bridge the gap between <strong class="text-primary">Theory</strong> and <strong class="text-success">Practical Application</strong> for student developers.</q></p>
+                <p>Developer Student Clubs (DSC) is program presented by Google Developers.  DSCs are university based community groups for students.  Students from all undergraduate or graduate programs with an interest in growing as a developer are welcome.  By joining a DSC, students grow their knowledge in a peer-to-peer learning environment and build solutions for local businesses and their community.</p>
 
-              <h4>What's the Solution Challenge?</h4>
-              <p>The Solution Challenge is an annual contest presented by Developer Student Clubs (DSC) that invites students to develop solutions for local community problems using one or more Google products or platforms.  10 winning teams (up to 4 members) from across the globe will be identified and receive prizes including but, not limited to:</p>
-              <ul>
-                <li>A curated experience with Googlers to celebrate the winning solutions</li>
-                <li>Winning teams will be featured on Google channels</li>
-              </ul>
-              <p>Submissions will be accepted between March 15-April 30, 2020</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- <section id="whats-a-dsc" class="p-5">
-          <div class="container">
-            <div class="card p-5">
-              <h1>What's a Developer Student Club?</h1>
-              
-              <a class="btn btn-success" target="_blank" href="https://developers.google.com/community/dsc">More Info</a>
-            </div>
-          </div>
-        </section>
-        <section id="whats-the-solution-challenge" class="p-5">
-          <div class="container mb-5">
-            <div class="card p-5">
-              <h1>What's the Solution Challenge?</h1>
-              <p>The Solution Challenge is an annual contest presented by Developer Student Clubs (DSC) that invites students to develop solutions for local community problems using one or more Google products or platforms.  10 winning teams (up to 4 members) from across the globe will be identified and receive prizes including but, not limited to:</p>
-              <ul>
-                <li>A curated experience with Googlers to celebrate the winning solutions</li>
-                <li>Winning teams will be featured on Google channels</li>
-              </ul>
-              <p>Submissions will be accepted between March 15-April 30, 2020</p>
-            </div>
-          </div>
-        </section> -->
-        
-        <section id="faq" class="p-5">
-          <div class="container">
-            <div class="card p-5">
-              <h1>FAQ</h1>
-
-              <div v-for="({question,answer}, index) in faqs" :key="index">
-                <h4 class="mb-0" data-toggle="collapse" :data-target="'#collapse-' + index">
-                  {{ question }}
-                </h4>
-                <p>{{ answer }}</p>
+                <h4>What's the Solution Challenge?</h4>
+                <p>The Solution Challenge is an annual contest presented by Developer Student Clubs (DSC) that invites students to develop solutions for local community problems using one or more Google products or platforms.  10 winning teams (up to 4 members) from across the globe will be identified and receive prizes including but, not limited to:</p>
+                <ul>
+                  <li>A curated experience with Googlers to celebrate the winning solutions</li>
+                  <li>Winning teams will be featured on Google channels</li>
+                </ul>
+                <p>Submissions will be accepted between March 15-April 30, 2020</p>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+          
+          <section id="faq" class="p-5">
+            <div class="container">
+              <div class="card p-5">
+                <h1>FAQ</h1>
 
-        <section id="schedule" class="p-5">
-          <div class="container">
-            <div class="card p-5">
-              <h1>Schedule</h1>
-              <div id="calendar" ref="calendar"></div>
-            </div>
-          </div>
-        </section>
-
-        <section id="sponsors" class="p-5">
-          <div class="container">
-            <div class="card p-5">
-              <h1>Sponsors</h1>
-              <h2>Coming Soon</h2>
-            </div>
-          </div>
-        </section>
-
-        <section id="team" class="p-5">
-          <div class="container">
-            <div class="card p-5">
-              <h1>Team</h1>
-            </div>
-          </div>
-        </section>
-        <section id="contact" class="p-5">
-          <div class="container">
-            <div class="card p-5">
-              <h1>Contact</h1>
-
-              <div class="row">
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col"></div>
+                <div v-for="({question,answer}, index) in faqs" :key="index">
+                  <h4 class="mb-0" data-toggle="collapse" :data-target="'#collapse-' + index">
+                    {{ question }}
+                  </h4>
+                  <p>{{ answer }}</p>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
+          </section>
+
+          <section id="schedule" class="p-5">
+            <div class="container">
+              <div class="card p-5">
+                <h1>Schedule</h1>
+                <div id="calendar" ref="calendar"></div>
+              </div>
+            </div>
+          </section>
+
+          <section id="sponsors" class="p-5">
+            <div class="container">
+              <div class="card p-5">
+                <h1>Sponsors</h1>
+                <h2>Coming Soon</h2>
+              </div>
+            </div>
+          </section>
+
+          <section id="team" class="p-5">
+            <div class="container">
+              <div class="card p-5">
+                <h1>Team</h1>
+              </div>
+            </div>
+          </section>
+          <section id="contact" class="p-5">
+            <div class="container">
+              <div class="card p-5">
+                <h1>Contact</h1>
+
+                <div class="row">
+                  <div class="col">
+                    <b>General Info</b>
+                    <p><a href="mailto:hackdsc@googlegroups.com">hackdsc@googlegroups.com</a></p>
+                  </div>
+                  <div class="col">
+                    <b>Sponsorships</b>
+                    <p><a href="mailto:sponsors.hackdsc@googlegroups.com">sponsors.hackdsc@googlegroups.com</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       </main>
       <footer class="footer text-white text-center p-5 mt-auto">
         <div class="container">

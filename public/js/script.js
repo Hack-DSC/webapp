@@ -1,16 +1,6 @@
+
 document.addEventListener('DOMContentLoaded', function () {
-    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-    // // The Firebase SDK is initialized and available here!
-    //
-    // firebase.auth().onAuthStateChanged(user => { });
-    // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-    // firebase.messaging().requestPermission().then(() => { });
-    // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-    //
-    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-    var provider = new firebase.auth.GoogleAuthProvider();
-
+    const provider = new firebase.auth.GoogleAuthProvider()
     Vue.use(Vuefire.firestorePlugin)
 
     const app = new Vue({
@@ -28,13 +18,17 @@ document.addEventListener('DOMContentLoaded', function () {
         mounted() {
 
             firebase.auth().onAuthStateChanged(user => {
-                this.user = user;
+                this.user = user
                 if (user) {
                     console.log('Is logged in as ' + user.email)
+
+                    if (!user.finishedProfile) {
+                        this.openRegistrationModal()
+                    }
                 } else {
                     console.log('Is logged out')
                 }
-            });
+            })
 
             this.calendar = new FullCalendar.Calendar(this.$refs.calendar, {
                 plugins: ['dayGrid', 'timeGrid'],
@@ -45,9 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     center: '',
                     right: ''
                 },
-                // columnHeaderFormat: {
-                //     weekday: 'long'
-                // },
                 visibleRange: {
                     start: '2020-04-24',
                     end: '2020-04-27'
@@ -60,24 +51,22 @@ document.addEventListener('DOMContentLoaded', function () {
             this.calendar.render()
         },
         methods: {
-            startGoogleAuth() {
-                firebase.auth().signInWithPopup(provider).then(function (result) {
-                    // This gives you a Google Access Token. You can use it to access the Google API.
-                    var token = result.credential.accessToken;
-                    // The signed-in user info.
-                    var user = result.user;
-                    // ...
-                    alert(user.displayName)
-                }).catch(function (error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    // The email of the user's account used.
-                    var email = error.email;
-                    // The firebase.auth.AuthCredential type that was used.
-                    var credential = error.credential;
-                    // ...
-                });
+            async startGoogleAuth() {
+                try {
+                    const result = await firebase.auth().signInWithPopup(provider)
+                    // const token = result.credential.accessToken
+                } catch (e) {
+                     // Handle Errors here.
+                     const errorCode = error.code
+                     const errorMessage = error.message
+                     // The email of the user's account used.
+                     const email = error.email
+                     // The firebase.auth.AuthCredential type that was used.
+                     const credential = error.credential
+                }
+            },
+            openRegistrationModal () {
+                $('#registration-modal').modal('show')
             }
         },
         watch: {
@@ -86,6 +75,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         },
         computed: {
+            loggedIn () {
+                return this.user !== null
+            },
+            // From Firestore documents to FullCalendar events
             convertedEvents () {
                 return this.events.map(event => ({
                     title: event.title,
@@ -94,5 +87,5 @@ document.addEventListener('DOMContentLoaded', function () {
                 }))
             }
         }
-    });
-});
+    })
+})
