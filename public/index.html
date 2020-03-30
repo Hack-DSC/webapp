@@ -10,6 +10,7 @@
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/7.13.1/firebase-firestore.js"></script>
     <script defer src="/__/firebase/7.13.1/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/7.13.1/firebase-auth.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
@@ -66,7 +67,7 @@
                   <a class="nav-link" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                  <button class="btn btn-primary" type="button">Register</button>
+                  <button class="btn btn-primary" type="button" @click="startGoogleAuth" :disabled="user !== null">{{ user ? 'Registered' : 'Register' }}</button>
                 </li>
               </ul>
             </div>
@@ -83,8 +84,10 @@
             <div class="col text-center pt-5">
               <p class="lead">
                 A Premier Virtual Hackathon Powered by North America's Developer Student Clubs
+                <br>
+                <b>4/24 - 4/26</b>
               </p>
-              <a class="btn btn-primary btn-lg" href="#">Register for 4/24-4/26</a>
+              <button class="btn btn-primary btn-lg" href="#" @click="startGoogleAuth" :disabled="user !== null">{{ user ? `See you soon ${user.displayName}` : 'Register Now' }}</button>
             </div>
           </div>
           
