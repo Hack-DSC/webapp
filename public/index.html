@@ -36,19 +36,11 @@
             <div class="collapse navbar-collapse">
               <ul class="navbar-nav ml-auto" id="navbarSupportedContent">
                 <li class="nav-item">
-                  <a class="nav-link" href="#whats-hack-dsc">What is Hack DSC?</a>
+                  <a class="nav-link" href="#what-is-hack-dsc">What is Hack DSC?</a>
                 </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="#whats-a-dsc">What's a DSC?</a>
-                </li>
+
                 <li class="nav-item">
-                  <a class="nav-link" href="#whats-the-solution-challenge">What's the Solution Challenge?</a>
-                </li> -->
-                <li class="nav-item">
-                  <a class="nav-link" href="#faq">FAQ</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#schedule">Schedule</a>
+                  <a class="nav-link" href="#schedule"><i class="far fa-calendar-alt"></i> Schedule</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#sponsors">Sponsors</a>
@@ -60,7 +52,7 @@
                   <a class="nav-link" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                  <button class="btn active btn-primary" type="button">REGISTER</button>
+                  <button class="btn  btn-primary" type="button">Register</button>
                 </li>
               </ul>
             </div>
@@ -85,7 +77,7 @@
 
         </div>
         <div class="bg-light">
-        <section id="whats-hack-dsc" class="p-4">
+        <section id="what-is-hack-dsc" class="p-4">
           <div class="container">
             <div class="card p-5">
               <h1>What is Hack DSC?</h1>
@@ -130,32 +122,22 @@
         </section> -->
         
         <section id="faq" class="p-5">
-          <div class="container mb-5">
+          <div class="container">
             <div class="card p-5">
               <h1>FAQ</h1>
-              <div class="accordion" id="accordionExample">
 
-                <div class="card" v-for="({question,answer}, index) in faq" :key="index">
-                  <div class="card-header" id="headingOne">
-                    <p class="mb-0" data-toggle="collapse" :data-target="'#collapse-' + index">
-                      {{ question }}
-                    </p>
-                  </div>
-              
-                  <div :id="'collapse-' + index" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body">
-                      {{ answer }}
-                    </div>
-                  </div>
-                </div>
-
+              <div v-for="({question,answer}, index) in faq" :key="index">
+                <h4 class="mb-0" data-toggle="collapse" :data-target="'#collapse-' + index">
+                  {{ question }}
+                </h4>
+                <p>{{ answer }}</p>
               </div>
             </div>
           </div>
         </section>
 
         <section id="schedule" class="p-5">
-          <div class="container mb-5">
+          <div class="container">
             <div class="card p-5">
               <h1>Schedule</h1>
               <h2>Coming Soon</h2>
@@ -164,7 +146,7 @@
         </section>
 
         <section id="sponsors" class="p-5">
-          <div class="container mb-5">
+          <div class="container">
             <div class="card p-5">
               <h1>Sponsors</h1>
               <h2>Coming Soon</h2>
@@ -173,14 +155,14 @@
         </section>
 
         <section id="team" class="p-5">
-          <div class="container mb-5">
+          <div class="container">
             <div class="card p-5">
               <h1>Team</h1>
             </div>
           </div>
         </section>
         <section id="contact" class="p-5">
-          <div class="container py-5">
+          <div class="container">
             <div class="card p-5">
               <h1>Contact</h1>
             </div>
