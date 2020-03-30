@@ -34,7 +34,7 @@ const particlesObj = {
             }
         },
         "size": {
-            "value": 50,
+            "value": 40,
             "random": false,
             "anim": {
                 "enable": false,
@@ -52,7 +52,7 @@ const particlesObj = {
         },
         "move": {
             "enable": true,
-            "speed": 4,
+            "speed": 2,
             "direction": "none",
             "random": true,
             "straight": false,
