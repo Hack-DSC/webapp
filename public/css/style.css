@@ -1,54 +1,60 @@
 html {
-    scroll-behavior: smooth;
-    font-size: 1.3em;
+  scroll-behavior: smooth;
+  font-size: 1.3em;
 }
 
 header {
-    font-size: 0.9em;
+  font-size: 0.9em;
 }
 
 footer {
-    font-size: 0.7em;
+  font-size: 0.7em;
 }
 
 .container {
-    max-width: 1000px;
+  max-width: 1000px;
+}
+
+#countdown {
+  position: absolute;
+  top: 73px;
+  left: 0;
+  right: 0;
 }
 
 #landing .row {
-    min-height: 100vh;
-    
+  min-height: 100vh;
 }
 
 #landing {
-    max-width: 1100px;
-    position: relative;
-    /* text-shadow: 0px 0px 10px white; */
+  max-width: 1100px;
+  position: relative;
+  /* text-shadow: 0px 0px 10px white; */
 }
 
 .particles-js-canvas-el {
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
 }
 
 .nav-link.active {
-    border-bottom: 2px solid var(--primary);
+  border-bottom: 2px solid var(--primary);
 }
 
 body {
-    position: relative;
+  position: relative;
 }
 
 footer {
-    background-color: #303c42;
+  background-color: #303c42;
 }
 
 .fc-time-grid .fc-slats td {
-    height: 3em;
-    border-bottom: 0;
+  height: 3em;
+  border-bottom: 0;
 }
