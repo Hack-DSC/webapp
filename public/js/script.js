@@ -11,44 +11,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var provider = new firebase.auth.GoogleAuthProvider();
 
+    Vue.use(Vuefire.firestorePlugin)
+
     const app = new Vue({
         el: '#app',
         data: {
             user: null,
-            faq: [
-                {
-                    question: 'What\'s a Hackathon?',
-                    answer: '[answer here]'
-                },
-                {
-                    question: 'Who can join?',
-                    answer: 'Any post-secondary/collegiate student from any background'
-                },
-                {
-                    question: 'What platforms are we using?',
-                    answer: 'Discord & Youtube Live'
-                },
-                {
-                    question: 'Can I work on things in advance?',
-                    answer: 'See early bird track'
-                },
-                {
-                    question: 'How much does the event cost?',
-                    answer: 'Free'
-                },
-                {
-                    question: 'How will winners receive their prizes?',
-                    answer: 'Shipped Directly'
-                },
-                {
-                    question: 'Do I need to be in a DSC?',
-                    answer: 'Nope! But we encourage you to join one or start your own!'
-                }
-            ],
+            faqs: [],
             events: [],
             calendar: null
         },
+        firestore: {
+            faqs: firebase.firestore().collection('faqs')
+        },
         mounted() {
+
             firebase.auth().onAuthStateChanged(user => {
                 this.user = user;
                 if (user) {
