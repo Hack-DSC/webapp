@@ -15,11 +15,15 @@ document.addEventListener('DOMContentLoaded', function () {
             hacker: null,
             faqs: [],
             events: [],
+            team: [],
+            sponsors: [],
             calendar: null
         },
         firestore: {
             faqs: firebase.firestore().collection('faqs'),
-            events: firebase.firestore().collection('events')
+            events: firebase.firestore().collection('events'),
+            team: firebase.firestore().collection('team'),
+            sponsors: firebase.firestore().collection('sponsors'),
         },
         mounted() {
             firebase.auth().onAuthStateChanged(user => {
@@ -35,7 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         })
                     
                 } else {
-                    this.$unbind('hacker')
+                    try {
+                        this.$unbind('hacker')
+                    } catch (e) {
+                        
+                    }
                     console.log('Is logged out')
                 }
             })

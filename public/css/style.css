@@ -58,3 +58,7 @@ footer {
   height: 3em;
   border-bottom: 0;
 }
+
+.team-member-image {
+  max-width: 200px;
+}
