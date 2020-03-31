@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (newHacker === null) {
                     $('#registration-modal').modal('show')
                 } else {
-                    console.log('Hacker exists, closing modal')
+                    $('#registration-modal').modal('hide')
                 }
             }
         },
