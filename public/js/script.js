@@ -113,7 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 } catch (e) {
                     alert('There was an error finishing your registration. Please try again later.')
                 }
-            }
+            },
+            
         },
         watch: {
             events () {
@@ -136,10 +137,19 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             // From Firestore documents to FullCalendar events
             convertedEvents () {
+                const eventColors = {
+                    main: 'var(--danger)',
+                    workshop: 'var(--primary)',
+                    judging: 'var(--warning)',
+                    misc: 'var(--success)'
+
+                }
                 return this.events.map(event => ({
                     title: event.title,
                     start: event.start.toDate(),
                     end: event.end.toDate(),
+                    textColor: 'white',
+                    color: eventColors[event.type] || 'var(--success)'
                 }))
             }
         }
