@@ -82,20 +82,23 @@
       </div>
 
       <main>
-        <div id="landing" class="mx-auto px-5">
+        <div id="landing" class="mx-auto px-5 d-flex flex-column justify-content-center">
           <div class="row align-items-center">
             <div class="col-7">
               <img src="/img/hackdsc.png" width="100%" alt="HackDSC Logo">
             </div>
             <div class="col-5 text-center">
-              <h1 class="text-bold">
+              <h1 class="text-bold m-0">
                 April 24th - April 26th
               </h1>
             </div>
           </div>
-          <!-- <div class="col-12">
-          <p>Description here</p>
-          </div> -->
+          <div class="row mt-2">
+            <div class="col-12 text-center">
+              <p class="lead">A Premier Virtual Hackathon Powered by North America's Developer Student Clubs</p>
+              <button class="btn btn-primary" @click="startGoogleAuth" :disabled="loggedIn">{{ loggedIn ? `See you soon ${user.displayName}!`: 'Register Now' }}</button>
+            </div>
+          </div>
         </div>
 
         <!-- Registration modal -->

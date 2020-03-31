@@ -17,12 +17,12 @@ footer {
 
 #countdown {
   position: absolute;
-  top: 73px;
+  top: 72px;
   left: 0;
   right: 0;
 }
 
-#landing .row {
+#landing {
   min-height: 100vh;
 }
 
