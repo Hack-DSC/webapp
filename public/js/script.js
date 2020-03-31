@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', function () {
                                 this.openRegistrationModal()
                             }
                         })
-                    
+
                 } else {
                     try {
                         this.$unbind('hacker')
                     } catch (e) {
-                        
+
                     }
                     console.log('Is logged out')
                 }
@@ -72,38 +72,38 @@ document.addEventListener('DOMContentLoaded', function () {
             this.updateCountDown()
         },
         methods: {
-            updateCountDown () {
+            updateCountDown() {
                 let distance = dayjs('2020-04-27T01:00:00.000Z').diff(new Date(), 'milliseconds')
-                this.countdown.days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                this.countdown.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                this.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                this.countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                this.countdown.days = Math.floor(distance / (1000 * 60 * 60 * 24))
+                this.countdown.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+                this.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+                this.countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000)
             },
             async startGoogleAuth() {
                 try {
                     const result = await firebase.auth().signInWithPopup(provider)
                     // const token = result.credential.accessToken
                 } catch (e) {
-                     // Handle Errors here.
-                     const errorCode = error.code
-                     const errorMessage = error.message
-                     // The email of the user's account used.
-                     const email = error.email
-                     // The firebase.auth.AuthCredential type that was used.
-                     const credential = error.credential
+                    // Handle Errors here.
+                    const errorCode = error.code
+                    const errorMessage = error.message
+                    // The email of the user's account used.
+                    const email = error.email
+                    // The firebase.auth.AuthCredential type that was used.
+                    const credential = error.credential
                 }
             },
-            openRegistrationModal () {
+            openRegistrationModal() {
                 $('#registration-modal').modal('show')
             },
-            async finishRegistration (event) {
+            async finishRegistration(event) {
                 const displayName = event.target.displayName.value
                 const school = event.target.school.value
                 const schoolEmail = event.target['school-email'].value
                 const grade = event.target['grade-level'].value
                 const hackathonCount = event.target['hackathon-count'].value
                 const experience = event.target.experience.value
-                
+
 
                 try {
                     await firebase.auth().currentUser.updateProfile({
@@ -122,13 +122,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert('There was an error finishing your registration. Please try again later.')
                 }
             },
-            
+
         },
         watch: {
-            events () {
+            events() {
                 this.calendar.refetchEvents()
             },
-            hacker (newHacker) {
+            hacker(newHacker) {
                 if (newHacker === null) {
                     $('#registration-modal').modal('show')
                 } else {
@@ -137,14 +137,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         },
         computed: {
-            loggedIn () {
+            loggedIn() {
                 return this.user !== null
             },
-            registered () {
+            registered() {
                 return this.hacker !== null
             },
             // From Firestore documents to FullCalendar events
-            convertedEvents () {
+            convertedEvents() {
                 const eventColors = {
                     main: 'var(--danger)',
                     workshop: 'var(--primary)',

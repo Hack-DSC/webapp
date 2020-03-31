@@ -212,7 +212,12 @@
             <div class="container">
               <div class="card p-5">
                 <h1>Sponsors</h1>
-                <h2>Coming Soon</h2>
+                <div class="row" v-if="sponsors.length > 0">
+                  <div v-for="sponsor in sponsors" :key="sponsor.id" class="col-6 text-center">
+                    <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'" class="sponsor-image">
+                  </div>
+                </div>
+                <p v-else>Coming soon...</p>
               </div>
             </div>
           </section>
