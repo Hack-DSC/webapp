@@ -63,9 +63,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 slotDuration: '01:00:00',
                 allDaySlot: false,
-                height: '600'
+                height: '600',
+                eventRender ({ event, el }) {
+                    $(el).popover({
+                        title: event.title,
+                        trigger: 'click hover',
+                        html: true,
+                        content: event.extendedProps.description || 'No description given.'
+                    })
+                }
             })
-
+            
             this.calendar.render()
 
             setInterval(this.updateCountDown, 1000)
@@ -153,9 +161,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 }
                 return this.events.map(event => ({
+                    id: event.id,
                     title: event.title,
                     start: event.start.toDate(),
                     end: event.end.toDate(),
+                    description: event.description,
                     textColor: 'white',
                     color: eventColors[event.type] || 'var(--success)'
                 }))
