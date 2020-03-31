@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 minutes: 0
             },
             user: null,
+            hacker: null,
             faqs: [],
             events: [],
             calendar: null
@@ -26,10 +27,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (user) {
                     console.log('Is logged in as ' + user.email)
 
-                    if (!user.finishedProfile) {
-                        this.openRegistrationModal()
-                    }
+                    this.$bind('hacker', firebase.firestore().collection('hackers').doc(user.uid))
+                        .then(hacker => {
+                            if (!hacker) {
+                                this.openRegistrationModal()
+                            }
+                        })
+                    
                 } else {
+                    this.$unbind('hacker')
                     console.log('Is logged out')
                 }
             })
@@ -80,12 +86,45 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             },
             openRegistrationModal () {
-                // $('#registration-modal').modal('show')
+                $('#registration-modal').modal('show')
+            },
+            async finishRegistration (event) {
+                const displayName = event.target.displayName.value
+                const school = event.target.school.value
+                const schoolEmail = event.target['school-email'].value
+                const grade = event.target['grade-level'].value
+                const hackathonCount = event.target['hackathon-count'].value
+                const experience = event.target.experience.value
+                
+
+                try {
+                    await firebase.auth().currentUser.updateProfile({
+                        displayName
+                    })
+                    await firebase.firestore().collection('hackers').doc(this.user.uid).set({
+                        school,
+                        schoolEmail,
+                        grade,
+                        hackathonCount,
+                        experience
+                    })
+
+                    $('#registration-modal').modal('hide')
+                } catch (e) {
+                    alert('There was an error finishing your registration. Please try again later.')
+                }
             }
         },
         watch: {
             events () {
                 this.calendar.refetchEvents()
+            },
+            hacker (newHacker) {
+                if (newHacker === null) {
+                    $('#registration-modal').modal('show')
+                } else {
+                    console.log('Hacker exists, closing modal')
+                }
             }
         },
         computed: {
