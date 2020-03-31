@@ -131,6 +131,9 @@ document.addEventListener('DOMContentLoaded', function () {
             loggedIn () {
                 return this.user !== null
             },
+            registered () {
+                return this.hacker !== null
+            },
             // From Firestore documents to FullCalendar events
             convertedEvents () {
                 return this.events.map(event => ({
