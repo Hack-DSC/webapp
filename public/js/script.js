@@ -62,8 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     end: '2020-04-27'
                 },
                 slotDuration: '01:00:00',
-                allDaySlot: false,
+                allDaySlot: true,
+                allDayText: 'All Day',
                 contentHeight: 600,
+                scrollTime: '08:00:00',
                 eventRender ({ event, el }) {
                     $(el).popover({
                         title: event.title,
@@ -168,7 +170,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     id: event.id,
                     title: event.title,
                     start: event.start.toDate(),
-                    end: event.end.toDate(),
+                    end: event.end ? event.end.toDate() : undefined,
+                    allDay: event.end === undefined,
                     description: event.description,
                     textColor: 'white',
                     color: eventColors[event.category] || 'var(--success)'
