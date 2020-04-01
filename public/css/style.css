@@ -1,7 +1,9 @@
 html {
   scroll-behavior: smooth;
-  font-size: 1.3em;
+  /* font-size: 1.3em; */
 }
+
+
 
 header {
   font-size: 0.9em;
@@ -9,6 +11,42 @@ header {
 
 footer {
   font-size: 0.7em;
+}
+
+
+/* Breakpoints from https://getbootstrap.com/docs/4.4/layout/overview/ */
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 1.1em;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
+
+  h4 {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  html {
+    font-size: 1.2em;
+  }
 }
 
 .container {
