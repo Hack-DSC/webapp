@@ -14,7 +14,7 @@ footer {
 }
 
 .sponsor-image {
-  transition: filter 0.2s;
+  transition: filter 0.3s;
 }
 
 .sponsor-image:hover {

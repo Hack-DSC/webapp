@@ -229,9 +229,11 @@
 
                 <div class="row">
                   <div v-for="member in team" :key="member.id" class="col col-md-4 text-center">
-                    <img :src="member.profileImageUrl" :alt="member.name + '\'s profile image'" class="img-thumbnail rounded-circle team-member-image">
-                    <h5 class="m-0">{{ member.name }}</h5>
-                    <p>{{ member.title }}</p>
+                    <a :href="member.personalUrl" class="text-dark text-decoration-none" target="_blank">
+                      <img :src="member.profileImageUrl" :alt="member.name + '\'s profile image'" class="img-thumbnail rounded-circle team-member-image">
+                      <h5 class="m-0">{{ member.name }}</h5>
+                      <p>{{ member.title }}</p>
+                    </a>
                   </div>
                 </div>
               </div>
