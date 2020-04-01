@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 slotDuration: '01:00:00',
                 allDaySlot: false,
-                height: '600',
+                contentHeight: 600,
                 eventRender ({ event, el }) {
                     $(el).popover({
                         title: event.title,
