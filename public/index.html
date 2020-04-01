@@ -88,9 +88,9 @@
               <img src="/img/hackdsc.png" width="100%" alt="HackDSC Logo">
             </div>
             <div class="col col-md-5 text-center">
-              <h1 class="text-bold m-0">
+              <h2 class="m-0 mt-3 mt-md-0 text-bold">
                 April 24th - April 26th
-              </h1>
+              </h2>
             </div>
           </div>
           <div class="row mt-2">
@@ -213,7 +213,7 @@
               <div class="card p-3 p-md-4 p-lg-5">
                 <h1>Sponsors</h1>
                 <div class="row" v-if="sponsors.length > 0">
-                  <div v-for="sponsor in sponsors" :key="sponsor.id" class="col-6 text-center">
+                  <div v-for="sponsor in sponsors" :key="sponsor.id" class="col col-md-6 text-center">
                     <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'" class="sponsor-image">
                   </div>
                 </div>
@@ -228,7 +228,7 @@
                 <h1>Team</h1>
 
                 <div class="row">
-                  <div v-for="member in team" :key="member.id" class="col-4 text-center">
+                  <div v-for="member in team" :key="member.id" class="col col-md-4 text-center">
                     <img :src="member.profileImageURL" :alt="member.name + '\'s profile image'" class="img-thumbnail rounded-circle team-member-image">
                     <h5 class="m-0">{{ member.name }}</h5>
                     <p>{{ member.title }}</p>
@@ -260,13 +260,13 @@
       <footer class="footer text-white text-center p-5">
         <div class="container">
           <div class="row align-items-center">
-            <div class="col"><span>Copyright © Hack DSC 2020</span></div>
-            <div class="col">
+            <div class="col col-md-4"><span>Copyright © Hack DSC 2020</span></div>
+            <div class="col col-md-4 my-3 my-md-0">
               <a href="#">
                 <img src="/img/hackdsc_white.png" alt="White variation of Hack DSC" height="40">
               </a>
             </div>
-            <div class="col"><span>Developed with <i class="fas fa-heart"></i> by the Hack DSC team</span></div>
+            <div class="col col-md-4"><span>Developed with <i class="fas fa-heart"></i> by the Hack DSC team</span></div>
           </div>
         </div>
       </footer>
