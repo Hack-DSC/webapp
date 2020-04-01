@@ -13,6 +13,13 @@ footer {
   font-size: 0.7em;
 }
 
+.sponsor-image {
+  transition: filter 0.2s;
+}
+
+.sponsor-image:hover {
+  filter: opacity(0.7);
+}
 
 /* Breakpoints from https://getbootstrap.com/docs/4.4/layout/overview/ */
 @media screen and (max-width: 576px) {

@@ -212,7 +212,9 @@
                 <h1>Sponsors</h1>
                 <div class="row mt-2" v-if="sponsors.length > 0">
                   <div v-for="sponsor in sponsors" :key="sponsor.id" class="col col-md-6 text-center">
-                    <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'" class="sponsor-image w-100">
+                    <a :href="sponsor.url" target="_blank">
+                      <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'" class="sponsor-image w-100">
+                    </a>
                   </div>
                 </div>
                 <p v-else>Coming soon...</p>
@@ -227,7 +229,7 @@
 
                 <div class="row">
                   <div v-for="member in team" :key="member.id" class="col col-md-4 text-center">
-                    <img :src="member.profileImageURL" :alt="member.name + '\'s profile image'" class="img-thumbnail rounded-circle team-member-image">
+                    <img :src="member.profileImageUrl" :alt="member.name + '\'s profile image'" class="img-thumbnail rounded-circle team-member-image">
                     <h5 class="m-0">{{ member.name }}</h5>
                     <p>{{ member.title }}</p>
                   </div>

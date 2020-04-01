@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     end: event.end.toDate(),
                     description: event.description,
                     textColor: 'white',
-                    color: eventColors[event.type] || 'var(--success)'
+                    color: eventColors[event.category] || 'var(--success)'
                 }))
             }
         }
