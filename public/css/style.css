@@ -13,12 +13,16 @@ footer {
   font-size: 0.7em;
 }
 
-.sponsor-image {
+.sponsor-image, .team-member {
   transition: filter 0.3s;
 }
 
-.sponsor-image:hover {
+.sponsor-image:hover, .team-member:hover {
   filter: opacity(0.7);
+}
+
+.team-member {
+  color: initial;
 }
 
 /* Breakpoints from https://getbootstrap.com/docs/4.4/layout/overview/ */
