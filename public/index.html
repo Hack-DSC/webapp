@@ -187,13 +187,9 @@
               <div class="card p-3 p-md-4 p-lg-5">
                 <h1>FAQ</h1>
 
-                <details v-for="({question,answer}, index) in faqs" :key="index" class="mb-1">
-                  <summary>
-                    <h4 class="mb-0 d-inline-block" data-toggle="collapse" :data-target="'#collapse-' + index">
-                      {{ question }}
-                    </h4>
-                  </summary>
-                  <p>{{ answer }}</p>
+                <details v-for="({question,answer}, index) in faqs" :key="index" class="mb-2">
+                  <summary class="h5 mb-0 d-inline-block faq-question" data-toggle="collapse" :data-target="'#collapse-' + index">{{ question }}</summary>
+                  <p class="m-0 text-muted">{{ answer }}</p>
                 </details>
               </div>
             </div>
