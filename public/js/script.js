@@ -108,25 +108,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 const displayName = event.target.displayName.value
                 const school = event.target.school.value
                 const schoolEmail = event.target['school-email'].value
-                const grade = event.target['grade-level'].value
+                const year = event.target.year.value
+                const major = event.target.major.value
                 const hackathonCount = event.target['hackathon-count'].value
-                const experience = event.target.experience.value
-
+                const specialty = event.target.specialty.value
 
                 try {
                     await firebase.auth().currentUser.updateProfile({
                         displayName
                     })
                     await firebase.firestore().collection('hackers').doc(this.user.uid).set({
+                        name: displayName,
                         school,
+                        major,
+                        specialty,
                         schoolEmail,
-                        grade,
+                        year,
                         hackathonCount,
-                        experience
+                        specialty
                     })
 
                     $('#registration-modal').modal('hide')
                 } catch (e) {
+                    console.error(e)
                     alert('There was an error finishing your registration. Please try again later.')
                 }
             },
