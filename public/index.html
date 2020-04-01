@@ -212,9 +212,9 @@
             <div class="container">
               <div class="card p-3 p-md-4 p-lg-5">
                 <h1>Sponsors</h1>
-                <div class="row" v-if="sponsors.length > 0">
+                <div class="row mt-2" v-if="sponsors.length > 0">
                   <div v-for="sponsor in sponsors" :key="sponsor.id" class="col col-md-6 text-center">
-                    <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'" class="sponsor-image">
+                    <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'" class="sponsor-image w-100">
                   </div>
                 </div>
                 <p v-else>Coming soon...</p>
