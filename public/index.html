@@ -1,299 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>HackDSC</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.13.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.13.1/firebase-firestore.js"></script>
-    <script defer src="/__/firebase/7.13.1/firebase-analytics.js"></script>
-    <script defer src="/__/firebase/7.13.1/firebase-storage.js"></script>
-    <script defer src="/__/firebase/7.13.1/firebase-auth.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>HackDSC</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Product+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/7.13.1/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/7.13.1/firebase-firestore.js"></script>
+  <script defer src="/__/firebase/7.13.1/firebase-analytics.js"></script>
+  <script defer src="/__/firebase/7.13.1/firebase-storage.js"></script>
+  <script defer src="/__/firebase/7.13.1/firebase-auth.js"></script>
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    
-    
-    <!-- FullCalendar -->
-    <link rel="stylesheet" type="text/css" media="screen"
-      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen"
-      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen"
-      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.js"></script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Product+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.23/dayjs.min.js"></script>
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
-  <body data-spy="scroll" data-target=".navbar" data-offset="100">
-    <div id="app">
-      <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light ml-auto shadow-sm">
-            <a class="navbar-brand" href="#">
-              <img src="/img/hackdsc.png" height="20" alt="HackDSC Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
-                  <a class="nav-link" href="#what-is-hack-dsc">What is HackDSC?</a>
-                </li>
-                <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
-                  <a class="nav-link" href="#schedule"><i class="far fa-calendar-alt"></i> Schedule</a>
-                </li>
-                <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
-                  <a class="nav-link" href="#sponsors">Sponsors</a>
-                </li>
-                <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
-                  <a class="nav-link" href="#faq">FAQ</a>
-                </li>
-                <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
-                  <a class="nav-link" href="#team">Team</a>
-                </li>
-                <li class="nav-item mr-3" data-toggle="collapse" data-target="#navbarSupportedContent.show">
-                  <a class="nav-link" href="#contact">Contact</a>
-                </li>
-                <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
-                  <button class="btn btn-primary" type="button" @click="startGoogleAuth" :disabled="loggedIn">{{ user ? 'Registered' : 'Register' }}</button>
-                </li>
-              </ul>
-            </div>
-        </nav>
-      </header>
 
-      <div id="countdown" class="card p-2 text-center">
-        <h3 class="m-0">
-          <i class="fas fa-clock"></i>
-          {{ countdown.days }} days {{ countdown.hours }} hours {{ countdown.minutes }} min
-        </h3>
-      </div>
+  <!-- FullCalendar -->
+  <link rel="stylesheet" type="text/css" media="screen"
+    href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css" />
+  <link rel="stylesheet" type="text/css" media="screen"
+    href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css" />
+  <link rel="stylesheet" type="text/css" media="screen"
+    href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.js"></script>
 
-      <main>
-        <div id="landing" class="mx-auto px-5 d-flex flex-column justify-content-center">
-          <div class="row align-items-center flex-column flex-md-row animated">
-            <div class="col col-md-7">
-              <img src="/img/hackdsc.png" width="100%" alt="HackDSC Logo" class="">
-            </div>
-            <div class="col col-md-5 text-center">
-              <h2 class="m-0 mt-3 mt-md-0 text-bold">
-                April 24th - 26th
-              </h2>
-            </div>
-          </div>
-          <div class="row mt-2">
-            <div class="col-12 text-center">
-              <p class="lead">A Premier Virtual Hackathon Powered by North America's Developer Student Clubs</p>
-              <button class="btn btn-primary" @click="startGoogleAuth" :disabled="loggedIn">{{ loggedIn ? `See you soon ${user.displayName}!`: 'Register Now' }}</button>
-            </div>
-          </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.23/dayjs.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="100">
+  <div id="app">
+    <header>
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light ml-auto shadow-sm">
+        <a class="navbar-brand" href="#">
+          <img src="/img/hackdsc.png" height="20" alt="HackDSC Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
+              <a class="nav-link" href="#what-is-hack-dsc">What is HackDSC?</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
+              <a class="nav-link" href="#schedule"><i class="far fa-calendar-alt"></i> Schedule</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
+              <a class="nav-link" href="#sponsors">Sponsors</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
+              <a class="nav-link" href="#faq">FAQ</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
+              <a class="nav-link" href="#team">Team</a>
+            </li>
+            <li class="nav-item mr-3" data-toggle="collapse" data-target="#navbarSupportedContent.show">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
+              <button class="btn btn-primary" type="button" @click="startGoogleAuth"
+                :disabled="loggedIn">{{ user ? 'Registered' : 'Register' }}</button>
+            </li>
+          </ul>
         </div>
+      </nav>
+    </header>
 
-        <!-- Registration modal -->
-        <div id="registration-modal" class="modal fade" data-backdrop="static" tabindex="-1">
-          <div v-if="loggedIn" class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Finish Registration</h5>
-              </div>
-              <div class="modal-body">
-                <form id="registration-form" @submit.prevent="finishRegistration">
-                  <div class="form-group">
-                    <label for="registration-name">Your Name</label>
-                    <input id="registration-name" name="displayName" type="text" class="form-control" :value="user.displayName" placeholder="What should we call you?" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="registration-school">Your School</label>
-                    <input id="registration-school" name="school" type="text" class="form-control" placeholder="Full title please!" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="registration-school-email">Your School Email</label>
-                    <input id="registration-school-email" name="school-email" type="email" class="form-control" placeholder="Use your .edu email if possible!" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="registration-year">Grade Level</label>
-                    <select class="custom-select" id="registration-year" name="year" required>
-                      <option value="1st">1st Year</option>
-                      <option value="2nd">2nd Year</option>
-                      <option value="3rd">3rd Year</option>
-                      <option value="4th">4th Year</option>
-                      <option value="4th+">4th Year+</option>
-                      <option value="graduate">Graduate</option>
-                      <option value="post-graduate">Post-Graduate</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="registration-major">Major</label>
-                    <input type="text" name="major" id="registration-major" maxlength="200" class="form-control" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="registration-resume">Résumé</label>
-                    <input type="file" name="resume" id="registration-resume" class="form-control" accept="application/pdf">
-                  </div>
-                  <div class="form-group">
-                    <label for="registration-hackathon-count">How many previous Hackathons have you participated in?</label>
-                    <select class="custom-select" id="registration-hackathon-count" name="hackathon-count" required>
-                      <option value="0">None yet!</option>
-                      <option value="1-5">1-5</option>
-                      <option value="5-10">5-10</option>
-                      <option value="10+">10+</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="registration-specialty">Technical Speciality</label>
-                    <input class="form-control" type="text" name="specialty" id="registration-specialty" placeholder="ex. full stack, back end, mobile" required>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-success" type="submit" form="registration-form">Save</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div id="what-is-hack-dsc" class="bg-light py-3 py-md-0">
-          <section class="p-1 p-sm-3 p-md-5">
-            <div class="container">
-              <div class="card p-3 p-md-4 p-lg-5">
-                <h1>What is HackDSC?</h1>
-                <p>HackDSC is a virtual student-run hackathon designed to inspire student developers across North America to create solutions for local community problems. We aim to unlock and harness the potential of future programmers, hackers, and designers, regardless of background, to create meaningful impact in their local communities.</p>
-                
-                <h4 class="mt-2">What's a DSC?</h4>
-                <img src="/img/gd_dsc_lockup_horizontal_color.png" style="width: 80%;" class="mt-2 mb-2" alt="DSC logo">
-                <p class="text-muted"><q>Developer Student Clubs bridge the gap between <strong class="text-primary">Theory</strong> and <strong class="text-success">Practical Application</strong> for student developers.</q></p>
-                <p>Developer Student Clubs (DSC) is program presented by Google Developers.  DSCs are university based community groups for students.  Students from all undergraduate or graduate programs with an interest in growing as a developer are welcome.  By joining a DSC, students grow their knowledge in a peer-to-peer learning environment and build solutions for local businesses and their community.</p>
-                <a href="https://developers.google.com/community/dsc" target="_blank" class="btn btn-warning mb-4">More Info</a>
-
-                <h4>What's the Solution Challenge?</h4>
-                <p>The Solution Challenge is an annual contest presented by Developer Student Clubs (DSC) that invites students to develop solutions for local community problems using one or more Google products or platforms.  10 winning teams (up to 4 members) from across the globe will be identified and receive prizes including but, not limited to:</p>
-                <ul>
-                  <li>A curated experience with Googlers to celebrate the winning solutions</li>
-                  <li>Winning teams will be featured on Google channels</li>
-                </ul>
-                <p>Submissions will be accepted between March 15-April 30, 2020</p>
-                <a href="https://events.withgoogle.com/dsc-solution-challenge/" target="_blank" class="btn btn-success">More Info</a>
-              </div>
-            </div>
-          </section>
-
-          <section id="schedule" class="p-1 p-sm-3 p-md-5">
-            <div class="container">
-              <div class="card p-3 p-md-4 p-lg-5" id="calendar-holder">
-                <h1>Schedule</h1>
-                <div id="calendar" ref="calendar"></div>
-                <div class="legend mt-3">
-                  <span class="badge badge-danger">Main Event</span>
-                  <span class="badge badge-primary">Workshop</span>
-                  <span class="badge badge-success">Misc.</span>
-                  <span class="badge badge-warning">Judging</span>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="sponsors" class="p-1 p-sm-3 p-md-5">
-            <div class="container">
-              <div class="card p-3 p-md-4 p-lg-5">
-                <h1>Sponsors</h1>
-                <div class="row mt-2" v-if="sponsors.length > 0">
-                  <div v-for="sponsor in sponsors" :key="sponsor.id" class="col col-md-6 text-center">
-                    <a :href="sponsor.url" target="_blank">
-                      <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'" class="sponsor-image w-100">
-                    </a>
-                  </div>
-                </div>
-                <p v-else>Coming soon...</p>
-              </div>
-            </div>
-          </section>
-
-          <section id="faq" class="p-1 p-sm-3 p-md-5">
-            <div class="container">
-              <div class="card p-3 p-md-4 p-lg-5">
-                <h1>FAQ</h1>
-
-                <details v-for="({question,answer}, index) in faqs" :key="index" class="mb-2">
-                  <summary class="h5 mb-0 d-inline-block faq-question" data-toggle="collapse" :data-target="'#collapse-' + index">{{ question }}</summary>
-                  <p class="m-0 text-muted">{{ answer }}</p>
-                </details>
-              </div>
-            </div>
-          </section>
-
-          <section id="team" class="p-1 p-sm-3 p-md-5">
-            <div class="container">
-              <div class="card p-3 p-md-4 p-lg-5">
-                <h1>Team</h1>
-
-                <div class="row">
-                  <div v-for="member in team" :key="member.id" class="col col-md-4 text-center">
-                    <a :href="member.personalUrl" class="text-dark text-decoration-none team-member" target="_blank">
-                      <img :src="member.profileImageUrl" :alt="member.name + '\'s profile image'" class="img-thumbnail rounded-circle team-member-image">
-                      <h5 class="m-0">{{ member.name }}</h5>
-                      <p>{{ member.title }}</p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section id="contact" class="p-1 p-sm-3 p-md-5">
-            <div class="container">
-              <div class="card p-3 p-md-4 p-lg-5">
-                <h1>Contact</h1>
-
-                <div class="row">
-                  <div class="col">
-                    <b>General Info</b>
-                    <p><a href="mailto:hackdsc@googlegroups.com">hackdsc@googlegroups.com</a></p>
-                  </div>
-                  <div class="col">
-                    <b>Sponsorships</b>
-                    <p><a href="mailto:sponsors.hackdsc@googlegroups.com">sponsors-hackdsc@googlegroups.com</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
-      <footer class="footer text-white text-center p-5">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col col-md-4"><span>Copyright © HackDSC 2020</span></div>
-            <div class="col col-md-4 my-3 my-md-0">
-              <a href="#">
-                <img src="/img/hackdsc_white.png" alt="White variation of HackDSC" height="40">
-              </a>
-            </div>
-            <div class="col col-md-4"><span>Developed with <i class="fas fa-heart text-primary"></i> by the HackDSC team</span></div>
-          </div>
-        </div>
-      </footer>
+    <div id="countdown" class="card p-2 text-center">
+      <h3 class="m-0">
+        <i class="fas fa-clock"></i>
+        {{ countdown.days }} days {{ countdown.hours }} hours {{ countdown.minutes }} min
+      </h3>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/2.2.2/vuefire.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="/js/script.js"></script>
-    <script src="/js/particles.js"></script>
-  </body>
+    <main>
+      <div id="landing" class="mx-auto px-5 d-flex flex-column justify-content-center">
+        <div class="row align-items-center flex-column flex-md-row animated">
+          <div class="col col-md-7">
+            <img src="/img/hackdsc.png" width="100%" alt="HackDSC Logo" class="">
+          </div>
+          <div class="col col-md-5 text-center">
+            <h2 class="m-0 mt-3 mt-md-0 text-bold">
+              April 24th - 26th
+            </h2>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12 text-center">
+            <p class="lead">A Premier Virtual Hackathon Powered by North America's Developer Student Clubs</p>
+            <button class="btn btn-primary" @click="startGoogleAuth"
+              :disabled="loggedIn">{{ loggedIn ? `See you soon ${user.displayName}!`: 'Register Now' }}</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration modal -->
+      <div id="registration-modal" class="modal fade" data-backdrop="static" tabindex="-1">
+        <div v-if="loggedIn" class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Finish Registration</h5>
+            </div>
+            <div class="modal-body">
+              <form id="registration-form" @submit.prevent="finishRegistration">
+                <div class="form-group">
+                  <label for="registration-name">Your Name</label>
+                  <input id="registration-name" name="displayName" type="text" class="form-control"
+                    :value="user.displayName" placeholder="What should we call you?" required>
+                </div>
+                <div class="form-group">
+                  <label for="registration-gender">Your Gender</label>
+                  <input id="registration-gender" name="gender" type="text" class="form-control" :value="user.gender"
+                    placeholder="" required>
+                </div>
+                <div class="form-group">
+                  <label for="registration-school">Your School</label>
+                  <input id="registration-school" name="school" type="text" class="form-control"
+                    placeholder="Full title please!" required>
+                </div>
+                <div class="form-group">
+                  <label for="registration-school-email">Your School Email</label>
+                  <input id="registration-school-email" name="school-email" type="email" class="form-control"
+                    placeholder="Use your .edu email if possible!" required>
+                </div>
+                <div class="form-group">
+                  <label for="registration-year">Grade Level</label>
+                  <select class="custom-select" id="registration-year" name="year" required>
+                    <option value="1st">1st Year</option>
+                    <option value="2nd">2nd Year</option>
+                    <option value="3rd">3rd Year</option>
+                    <option value="4th">4th Year</option>
+                    <option value="4th+">4th Year+</option>
+                    <option value="graduate">Graduate</option>
+                    <option value="post-graduate">Post-Graduate</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="registration-major">Major</label>
+                  <input type="text" name="major" id="registration-major" maxlength="200" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="registration-resume">Résumé</label>
+                  <input type="file" name="resume" id="registration-resume" class="form-control"
+                    accept="application/pdf">
+                </div>
+                <div class="form-group">
+                  <label for="registration-hackathon-count">How many previous Hackathons have you participated
+                    in?</label>
+                  <select class="custom-select" id="registration-hackathon-count" name="hackathon-count" required>
+                    <option value="0">None yet!</option>
+                    <option value="1-5">1-5</option>
+                    <option value="5-10">5-10</option>
+                    <option value="10+">10+</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="registration-specialty">Technical Speciality</label>
+                  <input class="form-control" type="text" name="specialty" id="registration-specialty"
+                    placeholder="ex. full stack, back end, mobile" required>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-success" type="submit" form="registration-form">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="what-is-hack-dsc" class="bg-light py-3 py-md-0">
+        <section class="p-1 p-sm-3 p-md-5">
+          <div class="container">
+            <div class="card p-3 p-md-4 p-lg-5">
+              <h1>What is HackDSC?</h1>
+              <p>HackDSC is a virtual student-run hackathon designed to inspire student developers across North America
+                to create solutions for local community problems. We aim to unlock and harness the potential of future
+                programmers, hackers, and designers, regardless of background, to create meaningful impact in their
+                local communities.</p>
+
+              <h4 class="mt-2">What's a DSC?</h4>
+              <img src="/img/gd_dsc_lockup_horizontal_color.png" style="width: 80%;" class="mt-2 mb-2" alt="DSC logo">
+              <p class="text-muted"><q>Developer Student Clubs bridge the gap between <strong
+                    class="text-primary">Theory</strong> and <strong class="text-success">Practical Application</strong>
+                  for student developers.</q></p>
+              <p>Developer Student Clubs (DSC) is program presented by Google Developers. DSCs are university based
+                community groups for students. Students from all undergraduate or graduate programs with an interest in
+                growing as a developer are welcome. By joining a DSC, students grow their knowledge in a peer-to-peer
+                learning environment and build solutions for local businesses and their community.</p>
+              <a href="https://developers.google.com/community/dsc" target="_blank" class="btn btn-warning mb-4">More
+                Info</a>
+
+              <h4>What's the Solution Challenge?</h4>
+              <p>The Solution Challenge is an annual contest presented by Developer Student Clubs (DSC) that invites
+                students to develop solutions for local community problems using one or more Google products or
+                platforms. 10 winning teams (up to 4 members) from across the globe will be identified and receive
+                prizes including but, not limited to:</p>
+              <ul>
+                <li>A curated experience with Googlers to celebrate the winning solutions</li>
+                <li>Winning teams will be featured on Google channels</li>
+              </ul>
+              <p>Submissions will be accepted between March 15-April 30, 2020</p>
+              <a href="https://events.withgoogle.com/dsc-solution-challenge/" target="_blank"
+                class="btn btn-success">More Info</a>
+            </div>
+          </div>
+        </section>
+
+        <section id="schedule" class="p-1 p-sm-3 p-md-5">
+          <div class="container">
+            <div class="card p-3 p-md-4 p-lg-5" id="calendar-holder">
+              <h1>Schedule</h1>
+              <div id="calendar" ref="calendar"></div>
+              <div class="legend mt-3">
+                <span class="badge badge-danger">Main Event</span>
+                <span class="badge badge-primary">Workshop</span>
+                <span class="badge badge-success">Misc.</span>
+                <span class="badge badge-warning">Judging</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="sponsors" class="p-1 p-sm-3 p-md-5">
+          <div class="container">
+            <div class="card p-3 p-md-4 p-lg-5">
+              <h1>Sponsors</h1>
+              <div class="row mt-2" v-if="sponsors.length > 0">
+                <div v-for="sponsor in sponsors" :key="sponsor.id" class="col col-md-6 text-center">
+                  <a :href="sponsor.url" target="_blank">
+                    <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'"
+                      class="sponsor-image w-100">
+                  </a>
+                </div>
+              </div>
+              <p v-else>Coming soon...</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" class="p-1 p-sm-3 p-md-5">
+          <div class="container">
+            <div class="card p-3 p-md-4 p-lg-5">
+              <h1>FAQ</h1>
+
+              <details v-for="({question,answer}, index) in faqs" :key="index" class="mb-2">
+                <summary class="h5 mb-0 d-inline-block faq-question" data-toggle="collapse"
+                  :data-target="'#collapse-' + index">{{ question }}</summary>
+                <p class="m-0 text-muted">{{ answer }}</p>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section id="team" class="p-1 p-sm-3 p-md-5">
+          <div class="container">
+            <div class="card p-3 p-md-4 p-lg-5">
+              <h1>Team</h1>
+
+              <div class="row">
+                <div v-for="member in team" :key="member.id" class="col col-md-4 text-center">
+                  <a :href="member.personalUrl" class="text-dark text-decoration-none team-member" target="_blank">
+                    <img :src="member.profileImageUrl" :alt="member.name + '\'s profile image'"
+                      class="img-thumbnail rounded-circle team-member-image">
+                    <h5 class="m-0">{{ member.name }}</h5>
+                    <p>{{ member.title }}</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="contact" class="p-1 p-sm-3 p-md-5">
+          <div class="container">
+            <div class="card p-3 p-md-4 p-lg-5">
+              <h1>Contact</h1>
+
+              <div class="row">
+                <div class="col">
+                  <b>General Info</b>
+                  <p><a href="mailto:hackdsc@googlegroups.com">hackdsc@googlegroups.com</a></p>
+                </div>
+                <div class="col">
+                  <b>Sponsorships</b>
+                  <p><a href="mailto:sponsors.hackdsc@googlegroups.com">sponsors-hackdsc@googlegroups.com</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer text-white text-center p-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col col-md-4"><span>Copyright © HackDSC 2020</span></div>
+          <div class="col col-md-4 my-3 my-md-0">
+            <a href="#">
+              <img src="/img/hackdsc_white.png" alt="White variation of HackDSC" height="40">
+            </a>
+          </div>
+          <div class="col col-md-4"><span>Developed with <i class="fas fa-heart text-primary"></i> by the HackDSC
+              team</span></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/2.2.2/vuefire.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="/js/script.js"></script>
+  <script src="/js/particles.js"></script>
+</body>
+
 </html>

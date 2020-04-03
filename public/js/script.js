@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 allDayText: 'All Day',
                 contentHeight: 600,
                 scrollTime: '08:00:00',
-                eventRender ({ event, el }) {
+                eventRender({ event, el }) {
                     $(el).popover({
                         title: event.title,
                         trigger: 'click hover',
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     })
                 }
             })
-            
+
             this.calendar.render()
 
             setInterval(this.updateCountDown, 1000)
@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             async finishRegistration(event) {
                 const displayName = event.target.displayName.value
+                const gender = event.target.gender.value
                 const school = event.target.school.value
                 const schoolEmail = event.target['school-email'].value
                 const year = event.target.year.value
@@ -117,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const hacker = {
                     name: displayName,
+                    gender,
                     school,
                     major,
                     specialty,
@@ -130,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (resume) {
                     const upload = await firebase.storage().ref().child('resumes').child(this.user.uid + '.pdf').put(resume)
-                    upload.ref.getDownloadURL().then(function(downloadURL) {
+                    upload.ref.getDownloadURL().then(function (downloadURL) {
                         console.log('File available at', downloadURL)
                         hacker.resumeURL = downloadURL
                     })
