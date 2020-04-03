@@ -25,6 +25,19 @@ footer {
   color: initial;
 }
 
+section .container .card {
+  /* box-shadow: 2px 2px 5px var(--primary); */
+  /* border: 3px solid var(--secondary); */
+}
+
+.card .icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 5em;
+  opacity: 0.2;
+}
+
 /* Breakpoints from https://getbootstrap.com/docs/4.4/layout/overview/ */
 @media screen and (max-width: 576px) {
   html {

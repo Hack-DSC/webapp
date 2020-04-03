@@ -64,6 +64,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
+              <a class="nav-link" href="#whats-a-dsc">What's a DSC?</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
               <a class="nav-link" href="#what-is-hack-dsc">What is HackDSC?</a>
             </li>
             <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
@@ -192,17 +195,12 @@
         </div>
       </div>
 
-      <div id="what-is-hack-dsc" class="bg-light py-3 py-md-0">
-        <section class="p-1 p-sm-3 p-md-5">
-          <div class="container">
-            <div class="card p-3 p-md-4 p-lg-5">
-              <h1>What is HackDSC?</h1>
-              <p>HackDSC is a virtual student-run hackathon designed to inspire student developers across North America
-                to create solutions for local community problems. We aim to unlock and harness the potential of future
-                programmers, hackers, and designers, regardless of background, to create meaningful impact in their
-                local communities.</p>
 
-              <h4 class="mt-2">What's a DSC?</h4>
+      <div class="bg-light py-3 py-md-0">
+        <section id="whats-a-dsc" class="p-1 p-sm-3 p-md-5">
+          <div class="container">
+            <div class="card p-3 p-md-4 p-md-5">
+              <h1 class="mt-2">What's a DSC?</h1>
               <img src="/img/gd_dsc_lockup_horizontal_color.png" style="width: 80%;" class="mt-2 mb-2" alt="DSC logo">
               <p class="text-muted"><q>Developer Student Clubs bridge the gap between <strong
                     class="text-primary">Theory</strong> and <strong class="text-success">Practical Application</strong>
@@ -230,6 +228,18 @@
           </div>
         </section>
 
+        <section id="what-is-hack-dsc" class="p-1 p-sm-3 p-md-5">
+          <div class="container">
+            <div class="card p-3 p-md-4 p-lg-5">
+              <h1>What is HackDSC?</h1>
+              <p>HackDSC is a virtual student-run hackathon designed to inspire student developers across North America
+                to create solutions for local community problems. We aim to unlock and harness the potential of future
+                programmers, hackers, and designers, regardless of background, to create meaningful impact in their
+                local communities.</p>
+            </div>
+          </div>
+        </section>
+
         <section id="schedule" class="p-1 p-sm-3 p-md-5">
           <div class="container">
             <div class="card p-3 p-md-4 p-lg-5" id="calendar-holder">
@@ -250,7 +260,7 @@
             <div class="card p-3 p-md-4 p-lg-5">
               <h1>Sponsors</h1>
               <div class="row mt-2" v-if="sponsors.length > 0">
-                <div v-for="sponsor in sponsors" :key="sponsor.id" class="col col-md-6 text-center">
+                <div v-for="sponsor in sponsors" :key="sponsor.id" class="col-12 col-lg-6 mt-4 mt-lg-0 text-center">
                   <a :href="sponsor.url" target="_blank">
                     <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'"
                       class="sponsor-image w-100">
