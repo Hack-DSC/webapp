@@ -115,20 +115,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 const hackathonCount = event.target['hackathon-count'].value
                 const specialty = event.target.specialty.value
 
+                const hacker = {
+                    name: displayName,
+                    school,
+                    major,
+                    specialty,
+                    schoolEmail,
+                    year,
+                    hackathonCount,
+                    specialty
+                }
+
+                const resume = event.target.resume.files[0]
+
+                if (resume) {
+                    const upload = await firebase.storage().ref().child('resumes').child(this.user.uid + '.pdf').put(resume)
+                    upload.ref.getDownloadURL().then(function(downloadURL) {
+                        console.log('File available at', downloadURL)
+                        hacker.resumeURL = downloadURL
+                    })
+                }
+
                 try {
                     await firebase.auth().currentUser.updateProfile({
                         displayName
                     })
-                    await firebase.firestore().collection('hackers').doc(this.user.uid).set({
-                        name: displayName,
-                        school,
-                        major,
-                        specialty,
-                        schoolEmail,
-                        year,
-                        hackathonCount,
-                        specialty
-                    })
+                    await firebase.firestore().collection('hackers').doc(this.user.uid).set(hacker)
 
                     $('#registration-modal').modal('hide')
                 } catch (e) {

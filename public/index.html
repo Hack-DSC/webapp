@@ -10,6 +10,7 @@
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/7.13.1/firebase-firestore.js"></script>
     <script defer src="/__/firebase/7.13.1/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/7.13.1/firebase-storage.js"></script>
     <script defer src="/__/firebase/7.13.1/firebase-auth.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
@@ -144,7 +145,7 @@
                   </div>
                   <div class="form-group">
                     <label for="registration-resume">Résumé</label>
-                    <input type="file" name="resume" id="registration-resume" class="form-control" required>
+                    <input type="file" name="resume" id="registration-resume" class="form-control" accept="application/pdf">
                   </div>
                   <div class="form-group">
                     <label for="registration-hackathon-count">How many previous Hackathons have you participated in?</label>
