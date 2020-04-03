@@ -107,8 +107,10 @@ const particlesObj = {
     "retina_detect": true
 };
 
-// XMLHttpRequest doesn't allow CORS, so to work around it we need to pass it a data URI
-const jsonUri = "data:text/plain;base64," + window.btoa(JSON.stringify(particlesObj));
-particlesJS.load("app", jsonUri, function () {
-    console.log("callback - particles.js config loaded");
+document.addEventListener('DOMContentLoaded', function () {
+    // XMLHttpRequest doesn't allow CORS, so to work around it we need to pass it a data URI
+    const jsonUri = "data:text/plain;base64," + window.btoa(JSON.stringify(particlesObj));
+    particlesJS.load("app", jsonUri, function () {
+        console.log("callback - particles.js config loaded");
+    });
 });
