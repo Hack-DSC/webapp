@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const major = event.target.major.value
                 const hackathonCount = event.target['hackathon-count'].value
                 const specialty = event.target.specialty.value
+                const shareResumeWithSponors = event.target['share-with-sponsors'].checked
 
                 const hacker = {
                     name: displayName,
@@ -126,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     schoolEmail,
                     year,
                     hackathonCount,
-                    specialty
+                    shareResumeWithSponors
                 }
 
                 const resume = event.target.resume.files[0]
@@ -134,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (resume) {
                     const upload = await firebase.storage().ref().child('resumes').child(this.user.uid + '.pdf').put(resume)
                     upload.ref.getDownloadURL().then(function (downloadURL) {
-                        console.log('File available at', downloadURL)
                         hacker.resumeURL = downloadURL
                     })
                 }

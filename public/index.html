@@ -137,7 +137,7 @@
                 </div>
                 <div class="form-group">
                   <label for="registration-gender">Your Gender</label>
-                  <input id="registration-gender" name="gender" type="text" class="form-control" :value="user.gender"
+                  <input id="registration-gender" name="gender" type="text" class="form-control"
                     placeholder="" required>
                 </div>
                 <div class="form-group">
@@ -168,8 +168,20 @@
                 </div>
                 <div class="form-group">
                   <label for="registration-resume">Résumé</label>
-                  <input type="file" name="resume" id="registration-resume" class="form-control"
-                    accept="application/pdf">
+                  <div class="row">
+                    <div class="col-12 col-md-8">
+                      <input type="file" name="resume" id="registration-resume" class="form-control"
+                        accept="application/pdf">
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="share-with-sponsors" id="share-with-sponsors">
+                        <label class="form-check-label" for="share-with-sponsors">
+                          Share with sponsors?
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="registration-hackathon-count">How many previous Hackathons have you participated
