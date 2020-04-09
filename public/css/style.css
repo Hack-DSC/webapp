@@ -147,3 +147,12 @@ footer {
 .team-member-image {
   max-width: 200px;
 }
+
+.event-dates {
+  min-width: 120px;
+}
+
+/* UTILS */
+.clickable {
+  cursor: pointer;
+}

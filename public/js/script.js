@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
             events: [],
             team: [],
             sponsors: [],
-            calendar: null
+            scheduleDay: 1
         },
         firestore: {
             faqs: firebase.firestore().collection('faqs'),
@@ -48,36 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
 
-            this.calendar = new FullCalendar.Calendar(this.$refs.calendar, {
-                plugins: ['dayGrid', 'timeGrid'],
-                defaultView: 'timeGrid',
-                events: (fetchInfo, successCallback, failureCallback) => successCallback(this.convertedEvents),
-                header: {
-                    left: '',
-                    center: '',
-                    right: ''
-                },
-                visibleRange: {
-                    start: '2020-04-24',
-                    end: '2020-04-27'
-                },
-                slotDuration: '01:00:00',
-                allDaySlot: true,
-                allDayText: 'All Day',
-                contentHeight: 600,
-                scrollTime: '08:00:00',
-                eventRender({ event, el }) {
-                    $(el).popover({
-                        title: event.title,
-                        trigger: 'click hover',
-                        html: true,
-                        content: event.extendedProps.description || 'No description given.'
-                    })
-                }
-            })
-
-            this.calendar.render()
-
             setInterval(this.updateCountDown, 1000)
             this.updateCountDown()
         },
@@ -103,6 +73,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     // The firebase.auth.AuthCredential type that was used.
                     const credential = error.credential
                 }
+            },
+            formatTimestamp (ts) {
+                return dayjs(ts.toDate()).format('h:mm a')
+            },
+            categoryClass (category) {
+                return {
+                    main: 'danger',
+                    workshop: 'primary',
+                    judging: 'warning',
+                    misc: 'success'
+                }[category] || 'success'
             },
             openRegistrationModal() {
                 $('#registration-modal').modal('show')
@@ -154,9 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         },
         watch: {
-            events() {
-                this.calendar.refetchEvents()
-            },
             hacker(newHacker) {
                 if (newHacker === null) {
                     $('#registration-modal').modal('show')
@@ -172,25 +150,17 @@ document.addEventListener('DOMContentLoaded', function () {
             registered() {
                 return this.hacker !== null
             },
-            // From Firestore documents to FullCalendar events
-            convertedEvents() {
-                const eventColors = {
-                    main: 'var(--danger)',
-                    workshop: 'var(--primary)',
-                    judging: 'var(--warning)',
-                    misc: 'var(--success)'
-
-                }
-                return this.events.map(event => ({
-                    id: event.id,
-                    title: event.title,
-                    start: event.start.toDate(),
-                    end: event.end ? event.end.toDate() : undefined,
-                    allDay: event.end === undefined,
-                    description: event.description,
-                    textColor: 'white',
-                    color: eventColors[event.category] || 'var(--success)'
-                }))
+            scheduleDayDate () {
+                return dayjs('2020-04-24').add(this.scheduleDay - 1, 'days')
+            },
+            scheduleDayDisplay () {
+                return this.scheduleDayDate.format('dddd, MMMM D')
+            },
+            dayEvents () {
+                return this.events
+                    .filter(event => dayjs(event.start.toDate())
+                    .isSame(this.scheduleDayDate, 'day'))
+                    .sort((a, b) => a.start.toDate() - b.start.toDate())
             }
         }
     })

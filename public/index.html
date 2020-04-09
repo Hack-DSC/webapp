@@ -271,12 +271,37 @@
           <div class="container">
             <div class="card p-3 p-md-4 p-lg-5" id="calendar-holder">
               <h1>Schedule</h1>
-              <div id="calendar" ref="calendar"></div>
-              <div class="legend mt-3">
-                <span class="badge badge-danger">Main Event</span>
-                <span class="badge badge-primary">Workshop</span>
-                <span class="badge badge-success">Misc.</span>
-                <span class="badge badge-warning">Judging</span>
+
+              <div id="calendar-new">
+                <ul class="nav nav-tabs nav-fill">
+                  <li class="nav-item clickable" @click="scheduleDay = 1">
+                    <a class="nav-link" :class="{ active: scheduleDay === 1 }">Day 1</a>
+                  </li>
+                  <li class="nav-item clickable" @click="scheduleDay = 2">
+                    <a class="nav-link" :class="{ active: scheduleDay === 2 }">Day 2</a>
+                  </li>
+                  <li class="nav-item clickable" @click="scheduleDay = 3">
+                    <a class="nav-link" :class="{ active: scheduleDay === 3 }">Day 3</a>
+                  </li>
+                </ul>
+
+                <div class="list-group" id="day-schedule">
+                  <p class="m-0 p-1 bg-dark text-white text-center border-left border-right">
+                    <strong class="mr-2">Day {{ scheduleDay }}</strong> {{ scheduleDayDisplay }}
+                  </p>
+                  <div v-for="event in dayEvents" :key="event.id" class="list-group-item" :style="{ 'border-left': `6px solid var(--${categoryClass(event.category)})` }">
+                    <div class="d-flex w-100">
+                      <div class="d-flex flex-column pr-2 event-dates">
+                        <div class="d-flex flex-column mb-2">
+                          <b>{{ formatTimestamp(event.start) }}</b>
+                          <b>{{ formatTimestamp(event.end) }}</b>
+                        </div>
+                        <strong class="text-capitalize" :class="'text-' + categoryClass(event.category)">{{ event.category }}</strong>
+                      </div>
+                      <p class="m-0">{{ event.title }}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
