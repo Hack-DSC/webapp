@@ -296,7 +296,7 @@
                           <b>{{ formatTimestamp(event.start) }}</b>
                           <b>{{ formatTimestamp(event.end) }}</b>
                         </div>
-                        <strong class="text-capitalize" :class="'text-' + categoryClass(event.category)">{{ event.category }}</strong>
+                        <strong class="text-capitalize" :class="'text-' + categoryClass(event.category)">{{ categoryDisplay(event.category) }}</strong>
                       </div>
                       <p class="m-0">{{ event.title }}</p>
                     </div>
