@@ -274,13 +274,13 @@
 
               <div id="calendar-new">
                 <ul class="nav nav-tabs nav-fill">
-                  <li class="nav-item clickable" @click="scheduleDay = 1">
+                  <li class="nav-item clickable" @click="scrollToScheduleDay(1)">
                     <a class="nav-link" :class="{ active: scheduleDay === 1 }">Day 1</a>
                   </li>
-                  <li class="nav-item clickable" @click="scheduleDay = 2">
+                  <li class="nav-item clickable" @click="scrollToScheduleDay(2)">
                     <a class="nav-link" :class="{ active: scheduleDay === 2 }">Day 2</a>
                   </li>
-                  <li class="nav-item clickable" @click="scheduleDay = 3">
+                  <li class="nav-item clickable" @click="scrollToScheduleDay(3)">
                     <a class="nav-link" :class="{ active: scheduleDay === 3 }">Day 3</a>
                   </li>
                 </ul>
@@ -289,16 +289,19 @@
                   <p class="m-0 p-1 bg-dark text-white text-center border-left border-right">
                     <strong class="mr-2">Day {{ scheduleDay }}</strong> {{ scheduleDayDisplay }}
                   </p>
-                  <div v-for="event in dayEvents" :key="event.id" class="list-group-item" :style="{ 'border-left': `6px solid var(--${categoryClass(event.category)})` }">
-                    <div class="d-flex w-100">
-                      <div class="d-flex flex-column pr-2 event-dates">
-                        <div class="d-flex flex-column mb-2">
-                          <b>{{ formatTimestamp(event.start) }}</b>
-                          <b>{{ formatTimestamp(event.end) }}</b>
+                  <div class="event-holder">
+                    <div v-for="event in sortedEvents" :key="event.id" class="list-group-item" :id="'event-' + event.id" :style="{ 'border-left': `6px solid var(--${categoryClass(event.category)})` }">
+                      <div class="d-flex w-100">
+                        <div class="d-flex flex-column pr-2 event-dates">
+                          <div class="d-flex flex-column mb-2">
+                            <b>{{ formatTimestamp(event.start) }} -</b>
+                            <b>{{ formatTimestamp(event.end) }}</b>
+                          </div>
+                          <strong class="text-capitalize" :class="'text-' + categoryClass(event.category)">{{ categoryDisplay(event.category) }}</strong>
                         </div>
-                        <strong class="text-capitalize" :class="'text-' + categoryClass(event.category)">{{ categoryDisplay(event.category) }}</strong>
+                        <p class="m-0 flex-fill event-title">{{ event.title }}</p>
+                        <strong class="text-muted event-status">Coming up</strong>
                       </div>
-                      <p class="m-0">{{ event.title }}</p>
                     </div>
                   </div>
                 </div>

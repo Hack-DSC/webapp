@@ -85,6 +85,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     misc: 'success'
                 }[category] || 'success'
             },
+            categoryDisplay (category) {
+                return {
+                    main: 'Main Event',
+                    workshop: 'Workshop',
+                    judging: 'Judging'
+                }[category] || 'Event'
+            },
+            scrollToScheduleDay (day) {
+                const firstDayEvent = this.sortedEvents.find(event => dayjs(event.start.toDate())
+                    .isSame(dayjs('2020-04-24')
+                    .add(day - 1, 'days'), 'day'))
+                console.log(firstDayEvent)
+                if (firstDayEvent) {
+                    const target = document.getElementById('event-' + firstDayEvent.id)
+                    target.parentNode.scrollTop = target.offsetTop - target.parentNode.offsetTop
+                }
+            },
             openRegistrationModal() {
                 $('#registration-modal').modal('show')
             },
@@ -156,11 +173,8 @@ document.addEventListener('DOMContentLoaded', function () {
             scheduleDayDisplay () {
                 return this.scheduleDayDate.format('dddd, MMMM D')
             },
-            dayEvents () {
-                return this.events
-                    .filter(event => dayjs(event.start.toDate())
-                    .isSame(this.scheduleDayDate, 'day'))
-                    .sort((a, b) => a.start.toDate() - b.start.toDate())
+            sortedEvents () {
+                return this.events.sort((a, b) => a.start.toDate() - b.start.toDate())
             }
         }
     })

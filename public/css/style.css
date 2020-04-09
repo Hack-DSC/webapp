@@ -148,6 +148,12 @@ footer {
   max-width: 200px;
 }
 
+.event-holder {
+  max-height: 600px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
 .event-dates {
   min-width: 120px;
 }
