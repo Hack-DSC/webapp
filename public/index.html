@@ -67,7 +67,8 @@
               <a class="nav-link" href="#what-is-hack-dsc">What is HackDSC?</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="more-info-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="more-info-dropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 More Info
               </a>
               <div class="dropdown-menu" aria-labelledby="more-info-dropdown">
@@ -143,8 +144,8 @@
                 </div>
                 <div class="form-group">
                   <label for="registration-gender">Your Gender</label>
-                  <input id="registration-gender" name="gender" type="text" class="form-control"
-                    placeholder="" required>
+                  <input id="registration-gender" name="gender" type="text" class="form-control" placeholder=""
+                    required>
                 </div>
                 <div class="form-group">
                   <label for="registration-school">Your School</label>
@@ -181,7 +182,8 @@
                     </div>
                     <div class="col-12 col-md-4">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="share-with-sponsors" id="share-with-sponsors">
+                        <input class="form-check-input" type="checkbox" name="share-with-sponsors"
+                          id="share-with-sponsors">
                         <label class="form-check-label" for="share-with-sponsors">
                           Share with sponsors?
                         </label>
@@ -231,8 +233,8 @@
           <div class="container">
             <div class="card p-3 p-md-4 p-md-5">
               <img src="/img/gd_dsc_lockup_horizontal_color.png" style="width: 80%;" class="mt-2 mb-2" alt="DSC logo">
-              <p><q>Developer Student Clubs bridge the gap between <strong
-                    class="text-primary">Theory</strong> and <strong class="text-success">Practical Application</strong>
+              <p><q>Developer Student Clubs bridge the gap between <strong class="text-primary">Theory</strong> and
+                  <strong class="text-success">Practical Application</strong>
                   for student developers.</q></p>
               <p>Developer Student Clubs (DSC) is program presented by Google Developers. DSCs are university based
                 community groups for students. Students from all undergraduate or graduate programs with an interest in
@@ -240,7 +242,7 @@
                 learning environment and build solutions for local businesses and their community.</p>
               <p class="text-center">
                 <a href="https://developers.google.com/community/dsc" target="_blank" class="btn btn-warning mb-4">More
-                Info</a>
+                  Info</a>
               </p>
             </div>
           </div>
@@ -290,14 +292,18 @@
                     <strong class="mr-2">Day {{ scheduleDay }}</strong> {{ scheduleDayDisplay }}
                   </p>
                   <div class="event-holder">
-                    <div v-for="event in sortedEvents" :key="event.id" class="list-group-item" :id="'event-' + event.id" :style="{ 'border-left': `6px solid var(--${categoryClass(event.category)})` }">
+                    <div v-for="event in sortedEvents" :key="event.id"
+                      class="list-group-item list-group-item-action clickable" :id="'event-' + event.id"
+                      :style="{ 'border-left': `6px solid var(--${categoryClass(event.category)})` }"
+                      @click="selectEvent(event)">
                       <div class="d-flex w-100">
                         <div class="d-flex flex-column pr-2 event-dates">
                           <div class="d-flex flex-column mb-2">
                             <b>{{ formatTimestamp(event.start) }} -</b>
                             <b>{{ formatTimestamp(event.end) }}</b>
                           </div>
-                          <strong class="text-capitalize" :class="'text-' + categoryClass(event.category)">{{ categoryDisplay(event.category) }}</strong>
+                          <strong class="text-capitalize"
+                            :class="'text-' + categoryClass(event.category)">{{ categoryDisplay(event.category) }}</strong>
                         </div>
                         <p class="m-0 flex-fill event-title">{{ event.title }}</p>
                         <strong class="text-muted event-status">Coming up</strong>
@@ -309,6 +315,27 @@
             </div>
           </div>
         </section>
+
+        <div id="event-modal" class="modal" tabindex="-1" role="dialog">
+          <div v-if="selectedEvent" class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">{{ selectedEvent.title }}
+                  <strong :class="'text-' + categoryClass(selectedEvent.category)">{{ categoryDisplay(selectedEvent.category) }}</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <small>{{ formatTimestamp(selectedEvent.start) }} - {{ formatTimestamp(selectedEvent.end) }}</small>
+                <p>{{ selectedEvent.description }}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <section id="sponsors" class="p-1 p-sm-3 p-md-5">
           <div class="container">

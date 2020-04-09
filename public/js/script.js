@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
             events: [],
             team: [],
             sponsors: [],
-            scheduleDay: 1
+            scheduleDay: 1,
+            selectedEvent: null
         },
         firestore: {
             faqs: firebase.firestore().collection('faqs'),
@@ -73,6 +74,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     // The firebase.auth.AuthCredential type that was used.
                     const credential = error.credential
                 }
+            },
+            selectEvent (event) {
+                this.selectedEvent = event
+                $('#event-modal').modal('show')
             },
             formatTimestamp (ts) {
                 return dayjs(ts.toDate()).format('h:mm a')
