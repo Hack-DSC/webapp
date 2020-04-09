@@ -276,14 +276,15 @@
 
               <div id="calendar-new">
                 <ul class="nav nav-tabs nav-fill">
+                  <!-- TODO: Fix active class when implemented -->
                   <li class="nav-item clickable" @click="scrollToScheduleDay(1)">
                     <a class="nav-link" :class="{ active: scheduleDay === 1 }">Day 1</a>
                   </li>
                   <li class="nav-item clickable" @click="scrollToScheduleDay(2)">
-                    <a class="nav-link" :class="{ active: scheduleDay === 2 }">Day 2</a>
+                    <a class="nav-link" :class="{ active: scheduleDay === 1 }">Day 2</a>
                   </li>
                   <li class="nav-item clickable" @click="scrollToScheduleDay(3)">
-                    <a class="nav-link" :class="{ active: scheduleDay === 3 }">Day 3</a>
+                    <a class="nav-link" :class="{ active: scheduleDay === 1 }">Day 3</a>
                   </li>
                 </ul>
 
