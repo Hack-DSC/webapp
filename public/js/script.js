@@ -163,6 +163,9 @@ document.addEventListener('DOMContentLoaded', function () {
             openRegistrationModal() {
                 $('#registration-modal').modal('show')
             },
+            cancelRegistration() {
+                $('#registration-modal').modal('hide')
+            },
             async finishRegistration(event) {
                 if (!event.target['mlh-authorize'].checked || !event.target['mlh-code-of-conduct'].checked) return alert('Make sure you read and accept the conditions at the bottom first!')
 

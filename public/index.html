@@ -97,8 +97,10 @@
               <a class="nav-link" href="#contact">Contact</a>
             </li>
             <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
-              <button class="btn btn-primary" type="button" @click="startGoogleAuth"
-                :disabled="loggedIn">{{ user ? 'Registered' : 'Register' }}</button>
+
+              <button v-if="!loggedIn" class="btn btn-primary" @click="startGoogleAuth">Register</button>
+              <button v-else class="btn btn-primary" @click="openRegistrationModal"
+                :disabled="loggedIn && registered">{{ registered ? 'Registered': 'Complete Registration' }}</button>
             </li>
           </ul>
         </div>
@@ -129,8 +131,9 @@
         <div class="row mt-2">
           <div class="col-12 text-center">
             <p class="lead">A Premier Virtual Hackathon Powered by North America's Developer Student Clubs</p>
-            <button class="btn btn-primary" @click="startGoogleAuth"
-              :disabled="loggedIn">{{ loggedIn ? `See you soon ${user.displayName}!`: 'Register Now' }}</button>
+            <button v-if="!loggedIn" class="btn btn-primary" @click="startGoogleAuth">Register Now</button>
+            <button v-else class="btn btn-primary" @click="openRegistrationModal"
+              :disabled="loggedIn && registered">{{ registered ? `See you soon ${user.displayName}!`: 'Complete Registration' }}</button>
           </div>
         </div>
       </div>
@@ -238,6 +241,7 @@
               </form>
             </div>
             <div class="modal-footer">
+              <button class="btn btn-light" type="submit" @click="cancelRegistration">Cancel</button>
               <button class="btn btn-success" type="submit" form="registration-form">Save</button>
             </div>
           </div>
