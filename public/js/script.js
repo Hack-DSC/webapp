@@ -164,6 +164,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 $('#registration-modal').modal('show')
             },
             async finishRegistration(event) {
+                if (!event.target['mlh-authorize'].checked || !event.target['mlh-code-of-conduct'].checked) return alert('Make sure you read and accept the conditions at the bottom first!')
+
                 const displayName = event.target.displayName.value
                 const gender = event.target.gender.value
                 const school = event.target.school.value
@@ -190,9 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (resume) {
                     const upload = await firebase.storage().ref().child('resumes').child(this.user.uid + '.pdf').put(resume)
-                    upload.ref.getDownloadURL().then(function (downloadURL) {
-                        hacker.resumeURL = downloadURL
-                    })
+                    hacker.resumeURL = await upload.ref.getDownloadURL()
                 }
 
                 try {

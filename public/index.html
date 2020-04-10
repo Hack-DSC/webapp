@@ -211,6 +211,28 @@
                   <input class="form-control" type="text" name="specialty" id="registration-specialty"
                     placeholder="ex. full stack, back end, mobile" required>
                 </div>
+                <hr>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="mlh-code-of-conduct" name="mlh-code-of-conduct">
+                  <label class="form-check-label" for="mlh-code-of-conduct">
+                    <small>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
+                      target="_blank" rel="noopener noreferrer">MLH Code of Conduct.</a>
+                    </small> </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="mlh-authorize" id="mlh-authorize">
+                  <label class="form-check-label" for="mlh-authorize">
+                    <small>
+                      I authorize you to share my application/registration information for event administration,
+                      ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages
+                      about hackathons in-line with the <a href="https://mlh.io/privacy" target="_blank"
+                        rel="noopener noreferrer">MLH Privacy Policy</a>. I further agree to the terms of both the <a
+                        href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions"
+                        target="_blank" rel="noopener noreferrer">MLH Contest Terms and Conditions</a> and the <a
+                        href="https://mlh.io/privacy" target="_blank" rel="noopener noreferrer">MLH Privacy Policy</a>.
+                    </small>
+                  </label>
+                </div>
               </form>
             </div>
             <div class="modal-footer">
@@ -326,13 +348,16 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">{{ selectedEvent.title }}
-                  <strong :class="'text-' + categoryClass(selectedEvent.category)">{{ categoryDisplay(selectedEvent.category) }}</strong></h5>
+                  <strong
+                    :class="'text-' + categoryClass(selectedEvent.category)">{{ categoryDisplay(selectedEvent.category) }}</strong>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body pt-1">
-                <small><strong>{{ formatTimestampDate(selectedEvent.start) }}</strong> | {{ formatTimestamp(selectedEvent.start) }} - {{ formatTimestamp(selectedEvent.end) }}</small>
+                <small><strong>{{ formatTimestampDate(selectedEvent.start) }}</strong> |
+                  {{ formatTimestamp(selectedEvent.start) }} - {{ formatTimestamp(selectedEvent.end) }}</small>
                 <p class="mt-1">{{ selectedEvent.description }}</p>
               </div>
               <div class="modal-footer">
@@ -367,7 +392,7 @@
               <details v-for="({question,answer}, index) in faqs" :key="index" class="mb-2">
                 <summary class="h5 mb-0 d-inline-block faq-question" data-toggle="collapse"
                   :data-target="'#collapse-' + index">{{ question }}</summary>
-                <p class="m-0 text-muted">{{ answer }}</p>
+                <p class="m-0 text-muted" v-html="answer"></p>
               </details>
             </div>
           </div>
