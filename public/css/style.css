@@ -150,7 +150,7 @@ footer {
 
 .event-holder {
   max-height: 600px;
-  overflow-y: auto;
+  overflow-y: scroll;
   scroll-behavior: smooth;
 }
 

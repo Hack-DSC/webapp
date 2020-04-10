@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const provider = new firebase.auth.GoogleAuthProvider()
     Vue.use(Vuefire.firestorePlugin)
 
+    const startDate = dayjs('2020-04-24')
+
     const app = new Vue({
         el: '#app',
         data: {
@@ -18,7 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
             team: [],
             sponsors: [],
             scheduleDay: 1,
-            selectedEvent: null
+            selectedEvent: null,
+            scheduleScrollTimeout: null
         },
         firestore: {
             faqs: firebase.firestore().collection('faqs'),
@@ -52,9 +55,35 @@ document.addEventListener('DOMContentLoaded', function () {
             setInterval(this.updateCountDown, 1000)
             this.updateCountDown()
         },
+        watch: {
+            hacker(newHacker) {
+                if (newHacker === null) {
+                    $('#registration-modal').modal('show')
+                } else {
+                    $('#registration-modal').modal('hide')
+                }
+            }
+        },
+        computed: {
+            loggedIn() {
+                return this.user !== null
+            },
+            registered() {
+                return this.hacker !== null
+            },
+            scheduleDayDate () {
+                return startDate.add(this.scheduleDay - 1, 'days')
+            },
+            scheduleDayDisplay () {
+                return this.scheduleDayDate.format('dddd, MMMM D')
+            },
+            sortedEvents () {
+                return this.events.sort((a, b) => a.start.toDate() - b.start.toDate())
+            }
+        },
         methods: {
             updateCountDown() {
-                let distance = dayjs('2020-04-27T01:00:00.000Z').diff(new Date(), 'milliseconds')
+                let distance = dayjs('2020-04-25T01:00:00.000Z').diff(new Date(), 'milliseconds')
                 this.countdown.days = Math.floor(distance / (1000 * 60 * 60 * 24))
                 this.countdown.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
                 this.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
@@ -97,9 +126,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     judging: 'Judging'
                 }[category] || 'Event'
             },
+            debounceScheduleScroll (event) {
+                if (this.scheduleScrollTimeout) clearTimeout(this.scheduleScrollTimeout)
+                this.scheduleScrollTimeout = setTimeout(() => this.handleScheduleScroll(event), 200)
+            },
+            handleScheduleScroll (event) {
+                console.log('scroll')
+            },
             scrollToScheduleDay (day) {
                 const firstDayEvent = this.sortedEvents.find(event => dayjs(event.start.toDate())
-                    .isSame(dayjs('2020-04-24')
+                    .isSame(startDate
                     .add(day - 1, 'days'), 'day'))
                 console.log(firstDayEvent)
                 if (firstDayEvent) {
@@ -155,32 +191,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             },
 
-        },
-        watch: {
-            hacker(newHacker) {
-                if (newHacker === null) {
-                    $('#registration-modal').modal('show')
-                } else {
-                    $('#registration-modal').modal('hide')
-                }
-            }
-        },
-        computed: {
-            loggedIn() {
-                return this.user !== null
-            },
-            registered() {
-                return this.hacker !== null
-            },
-            scheduleDayDate () {
-                return dayjs('2020-04-24').add(this.scheduleDay - 1, 'days')
-            },
-            scheduleDayDisplay () {
-                return this.scheduleDayDate.format('dddd, MMMM D')
-            },
-            sortedEvents () {
-                return this.events.sort((a, b) => a.start.toDate() - b.start.toDate())
-            }
         }
     })
 })
