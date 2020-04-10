@@ -276,15 +276,14 @@
 
               <div id="calendar-new">
                 <ul class="nav nav-tabs nav-fill">
-                  <!-- TODO: Fix active class when implemented -->
                   <li class="nav-item clickable" @click="scrollToScheduleDay(1)">
                     <a class="nav-link" :class="{ active: scheduleDay === 1 }">Day 1</a>
                   </li>
                   <li class="nav-item clickable" @click="scrollToScheduleDay(2)">
-                    <a class="nav-link" :class="{ active: scheduleDay === 1 }">Day 2</a>
+                    <a class="nav-link" :class="{ active: scheduleDay === 2 }">Day 2</a>
                   </li>
                   <li class="nav-item clickable" @click="scrollToScheduleDay(3)">
-                    <a class="nav-link" :class="{ active: scheduleDay === 1 }">Day 3</a>
+                    <a class="nav-link" :class="{ active: scheduleDay === 3 }">Day 3</a>
                   </li>
                 </ul>
 
@@ -292,7 +291,7 @@
                   <p class="m-0 p-1 bg-dark text-white text-center border-left border-right">
                     <strong class="mr-2">Day {{ scheduleDay }}</strong> {{ scheduleDayDisplay }}
                   </p>
-                  <div class="event-holder" @scroll.passive="debounceScheduleScroll">
+                  <div class="event-holder" @scroll="debounceScheduleScroll">
                     <div v-for="event in sortedEvents" :key="event.id"
                       class="list-group-item list-group-item-action clickable" :id="'event-' + event.id"
                       :style="{ 'border-left': `6px solid var(--${categoryClass(event.category)})` }"

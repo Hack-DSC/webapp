@@ -131,13 +131,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.scheduleScrollTimeout = setTimeout(() => this.handleScheduleScroll(event), 200)
             },
             handleScheduleScroll (event) {
-                console.log('scroll')
+                // Determine which day we are looking at
+                let newDay = 1
+                for (let i = 1; i <= 3; i++) {
+                    const firstDayEvent = this.sortedEvents.find(event => dayjs(event.start.toDate())
+                        .isSame(startDate
+                        .add(i - 1, 'days'), 'day'))
+                    const target = document.getElementById('event-' + firstDayEvent.id)
+                    
+                    // Are we scrolled past it??
+                    if (target.parentNode.scrollTop >= (target.offsetTop - target.parentNode.offsetTop)) {
+                        newDay = i
+                    }
+                }
+
+                this.scheduleDay = newDay
             },
             scrollToScheduleDay (day) {
                 const firstDayEvent = this.sortedEvents.find(event => dayjs(event.start.toDate())
                     .isSame(startDate
                     .add(day - 1, 'days'), 'day'))
-                console.log(firstDayEvent)
                 if (firstDayEvent) {
                     const target = document.getElementById('event-' + firstDayEvent.id)
                     target.parentNode.scrollTop = target.offsetTop - target.parentNode.offsetTop
