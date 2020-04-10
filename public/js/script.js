@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             }
                         })
 
+                    firebase.analytics().logEvent('login')
                 } else {
                     try {
                         this.$unbind('hacker')
