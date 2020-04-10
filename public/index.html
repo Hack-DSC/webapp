@@ -331,9 +331,9 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
-                <small>{{ formatTimestamp(selectedEvent.start) }} - {{ formatTimestamp(selectedEvent.end) }}</small>
-                <p>{{ selectedEvent.description }}</p>
+              <div class="modal-body pt-1">
+                <small><strong>{{ formatTimestampDate(selectedEvent.start) }}</strong> | {{ formatTimestamp(selectedEvent.start) }} - {{ formatTimestamp(selectedEvent.end) }}</small>
+                <p class="mt-1">{{ selectedEvent.description }}</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

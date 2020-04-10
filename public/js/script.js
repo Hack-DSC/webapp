@@ -111,6 +111,9 @@ document.addEventListener('DOMContentLoaded', function () {
             formatTimestamp (ts) {
                 return dayjs(ts.toDate()).format('h:mm a')
             },
+            formatTimestampDate (ts) {
+                return dayjs(ts.toDate()).format('dddd, MMMM D')
+            },
             categoryClass (category) {
                 return {
                     main: 'danger',
