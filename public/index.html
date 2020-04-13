@@ -367,7 +367,7 @@
               <details v-for="({question,answer}, index) in faqs" :key="index" class="mb-2">
                 <summary class="h5 mb-0 d-inline-block faq-question" data-toggle="collapse"
                   :data-target="'#collapse-' + index">{{ question }}</summary>
-                <p class="m-0 text-muted">{{ answer }}</p>
+                <p class="m-0 text-muted" v-html="answer"></p>
               </details>
             </div>
           </div>
