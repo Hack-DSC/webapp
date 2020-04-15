@@ -377,7 +377,7 @@
           <div class="container">
             <div class="card p-3 p-md-4 p-lg-5">
               <h1>Sponsors</h1>
-              <div class="row mt-2" v-if="sponsors.length > 0">
+              <div class="row mt-2 align-items-center" v-if="sponsors.length > 0">
                 <div v-for="sponsor in sponsors" :key="sponsor.id" class="col-12 col-lg-6 mt-4 mt-lg-0 text-center">
                   <a :href="sponsor.url" target="_blank">
                     <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'"
