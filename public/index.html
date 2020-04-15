@@ -381,6 +381,7 @@
                 <div v-for="sponsor in sponsors" :key="sponsor.id" class="col-12 col-lg-6 mt-4 mt-lg-0 text-center">
                   <a :href="sponsor.url" target="_blank">
                     <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'"
+                      :style="{ maxWidth: sponsor.maxWidth ? sponsor.maxWidth : 'auto' }"
                       class="sponsor-image w-100">
                   </a>
                 </div>
