@@ -391,13 +391,21 @@
             </div>
           </div>
         </section>
-        <!--
         <section id="contact" class="p-1 p-sm-3 p-md-5">
           <div class="container">
             <div class="card p-3 p-md-4 p-lg-5">
               <h1>Contact</h1>
 
-              <div class="row">
+              <form method="post" id="contact-form" @submit.prevent="sendEmail">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" placeholder="Name" class="form-control" required><br>
+                <label for="emailAddress">Email Address:</label><br>
+                <input type="email" id="email" name="email" placeholder="Email" class="form-control"required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" placeholder="Message" rows="4" cols="50" class="form-control" required></textarea><br>
+              </form>
+              <button class="btn btn-success" type="submit" form="contact-form">Submit</button>
+              <!-- <div class="row">
                 <div class="col">
                   <b>General Info</b>
                   <p><a href="mailto:hackdsc@googlegroups.com">hackdsc@googlegroups.com</a></p>
@@ -406,7 +414,7 @@
                   <b>Sponsorships</b>
                   <p><a href="mailto:sponsors.hackdsc@googlegroups.com">sponsors-hackdsc@googlegroups.com</a></p>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </section>
