@@ -211,20 +211,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             },
             async sendEmail(event) {
-                const email = {
+                const newContact = {
                     name: event.target.name.value,
                     fromEmail: event.target.email.value,
                     message: event.target.message.value 
                 }
-                console.log('entered sendEmail');
-                var emailForm = await fetch('/sendEmail', {
-                    method: "POST",
-                    body: JSON.stringify(email),
-                    headers: {
-                    'Content-Type': 'application/json'
-                    }
-                })
-                console.log(emailForm)
+                
+                firebase.firestore().collection('contact').add(newContact)
+                alert('Your message has been sent!')
+
+                event.target.name.value = ''
+                event.target.email.value = ''
+                event.target.message.value = ''
             },
 
         }
