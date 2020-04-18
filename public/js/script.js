@@ -210,6 +210,22 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert('There was an error finishing your registration. Please try again later.')
                 }
             },
+            async sendEmail(event) {
+                const email = {
+                    name: event.target.name.value,
+                    fromEmail: event.target.email.value,
+                    message: event.target.message.value 
+                }
+                console.log('entered sendEmail');
+                var emailForm = await fetch('/sendEmail', {
+                    method: "POST",
+                    body: JSON.stringify(email),
+                    headers: {
+                    'Content-Type': 'application/json'
+                    }
+                })
+                console.log(emailForm)
+            },
 
         }
     })
