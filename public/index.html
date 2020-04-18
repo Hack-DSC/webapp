@@ -68,16 +68,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Resources
-              </a>
-              <div class="dropdown-menu" aria-labelledby="resourcesDropdown">
-                <div v-for="resource in resources" :key="resource.id">
-                  <a :href="resource.url" class="dropdown-item" target="_blank">{{resource.title}}</a>
-                </div>
-              </div>
-            </li>
             <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
               <a class="nav-link" href="#what-is-hack-dsc">What is HackDSC?</a>
             </li>
@@ -107,13 +97,17 @@
               <a class="nav-link" href="#contact">Contact</a>
             </li>
             <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
-              <button class="btn btn-primary" type="button" @click="startGoogleAuth"
-                :disabled="loggedIn">{{ user ? 'Registered' : 'Register' }}</button>
+
+              <button v-if="!loggedIn" class="btn btn-primary" @click="startGoogleAuth">Register</button>
+              <button v-else class="btn btn-primary" @click="openRegistrationModal"
+                :disabled="loggedIn && registered">{{ registered ? 'Registered': 'Complete Registration' }}</button>
             </li>
           </ul>
         </div>
       </nav>
     </header>
+
+    <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:absolute;right:35px;top:65px;width:10%;z-index:1" href="https://mlh.io/seasons/na-2020/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2020-season&utm_content=white" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2020/mlh-trust-badge-2020-white.svg" alt="Major League Hacking 2020 Hackathon Season" style="width:100%"></a>
 
     <div id="countdown" class="card p-2 text-center">
       <h3 class="m-0">
@@ -137,8 +131,9 @@
         <div class="row mt-2">
           <div class="col-12 text-center">
             <p class="lead">A Premier Virtual Hackathon Powered by North America's Developer Student Clubs</p>
-            <button class="btn btn-primary" @click="startGoogleAuth"
-              :disabled="loggedIn">{{ loggedIn ? `See you soon ${user.displayName}!`: 'Register Now' }}</button>
+            <button v-if="!loggedIn" class="btn btn-primary" @click="startGoogleAuth">Register Now</button>
+            <button v-else class="btn btn-primary" @click="openRegistrationModal"
+              :disabled="loggedIn && registered">{{ registered ? `See you soon ${user.displayName}!`: 'Complete Registration' }}</button>
           </div>
         </div>
       </div>
@@ -221,9 +216,32 @@
                   <input class="form-control" type="text" name="specialty" id="registration-specialty"
                     placeholder="ex. full stack, back end, mobile" required>
                 </div>
+                <hr>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="mlh-code-of-conduct" name="mlh-code-of-conduct">
+                  <label class="form-check-label" for="mlh-code-of-conduct">
+                    <small>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
+                      target="_blank" rel="noopener noreferrer">MLH Code of Conduct.</a>
+                    </small> </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="mlh-authorize" id="mlh-authorize">
+                  <label class="form-check-label" for="mlh-authorize">
+                    <small>
+                      I authorize you to share my application/registration information for event administration,
+                      ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages
+                      about hackathons in-line with the <a href="https://mlh.io/privacy" target="_blank"
+                        rel="noopener noreferrer">MLH Privacy Policy</a>. I further agree to the terms of both the <a
+                        href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions"
+                        target="_blank" rel="noopener noreferrer">MLH Contest Terms and Conditions</a> and the <a
+                        href="https://mlh.io/privacy" target="_blank" rel="noopener noreferrer">MLH Privacy Policy</a>.
+                    </small>
+                  </label>
+                </div>
               </form>
             </div>
             <div class="modal-footer">
+              <button class="btn btn-light" type="submit" @click="cancelRegistration">Cancel</button>
               <button class="btn btn-success" type="submit" form="registration-form">Save</button>
             </div>
           </div>
@@ -336,13 +354,16 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">{{ selectedEvent.title }}
-                  <strong :class="'text-' + categoryClass(selectedEvent.category)">{{ categoryDisplay(selectedEvent.category) }}</strong></h5>
+                  <strong
+                    :class="'text-' + categoryClass(selectedEvent.category)">{{ categoryDisplay(selectedEvent.category) }}</strong>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body pt-1">
-                <small><strong>{{ formatTimestampDate(selectedEvent.start) }}</strong> | {{ formatTimestamp(selectedEvent.start) }} - {{ formatTimestamp(selectedEvent.end) }}</small>
+                <small><strong>{{ formatTimestampDate(selectedEvent.start) }}</strong> |
+                  {{ formatTimestamp(selectedEvent.start) }} - {{ formatTimestamp(selectedEvent.end) }}</small>
                 <p class="mt-1">{{ selectedEvent.description }}</p>
               </div>
               <div class="modal-footer">
@@ -356,10 +377,11 @@
           <div class="container">
             <div class="card p-3 p-md-4 p-lg-5">
               <h1>Sponsors</h1>
-              <div class="row mt-2" v-if="sponsors.length > 0">
+              <div class="row mt-2 align-items-center" v-if="sponsors.length > 0">
                 <div v-for="sponsor in sponsors" :key="sponsor.id" class="col-12 col-lg-6 mt-4 mt-lg-0 text-center">
                   <a :href="sponsor.url" target="_blank">
                     <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'"
+                      :style="{ maxWidth: sponsor.maxWidth ? sponsor.maxWidth : 'auto' }"
                       class="sponsor-image w-100">
                   </a>
                 </div>
@@ -401,13 +423,27 @@
             </div>
           </div>
         </section>
-        <!--
         <section id="contact" class="p-1 p-sm-3 p-md-5">
           <div class="container">
             <div class="card p-3 p-md-4 p-lg-5">
               <h1>Contact</h1>
 
-              <div class="row">
+              <form method="post" id="contact-form" @submit.prevent="sendEmail">
+                <div class="form-group">
+                  <label for="contact-name">Name:</label><br>
+                  <input type="text" id="contact-name" name="name" placeholder="Your name" class="form-control" maxlength="200" required>
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Email Address:</label><br>
+                  <input type="email" id="contact-email" name="email" placeholder="An email we can reach you over" class="form-control" maxlength="200" required>
+                </div>
+                <div class="form-group">
+                  <label for="contact-message">Message:</label><br>
+                  <textarea id="contact-message" name="message" placeholder="What is your message?" rows="4" cols="50" class="form-control" required></textarea>
+                </div>
+              </form>
+              <button class="btn btn-success" type="submit" form="contact-form">Submit</button>
+              <!-- <div class="row">
                 <div class="col">
                   <b>General Info</b>
                   <p><a href="mailto:hackdsc@googlegroups.com">hackdsc@googlegroups.com</a></p>
@@ -416,7 +452,7 @@
                   <b>Sponsorships</b>
                   <p><a href="mailto:sponsors.hackdsc@googlegroups.com">sponsors-hackdsc@googlegroups.com</a></p>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </section>
