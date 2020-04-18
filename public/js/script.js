@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             events: [],
             team: [],
             sponsors: [],
+            resources: [],
             scheduleDay: 1,
             selectedEvent: null,
             scheduleScrollTimeout: null
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
             events: firebase.firestore().collection('events'),
             team: firebase.firestore().collection('team'),
             sponsors: firebase.firestore().collection('sponsors'),
+            resources: firebase.firestore().collection('resources')
         },
         mounted() {
             firebase.auth().onAuthStateChanged(user => {
@@ -142,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         .isSame(startDate
                         .add(i - 1, 'days'), 'day'))
                     const target = document.getElementById('event-' + firstDayEvent.id)
-                    
+
                     // Are we scrolled past it??
                     if (target.parentNode.scrollTop >= (target.offsetTop - target.parentNode.offsetTop)) {
                         newDay = i
@@ -163,12 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
             openRegistrationModal() {
                 $('#registration-modal').modal('show')
             },
-            cancelRegistration() {
-                $('#registration-modal').modal('hide')
-            },
             async finishRegistration(event) {
-                if (!event.target['mlh-authorize'].checked || !event.target['mlh-code-of-conduct'].checked) return alert('Make sure you read and accept the conditions at the bottom first!')
-
                 const displayName = event.target.displayName.value
                 const gender = event.target.gender.value
                 const school = event.target.school.value
@@ -195,7 +192,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (resume) {
                     const upload = await firebase.storage().ref().child('resumes').child(this.user.uid + '.pdf').put(resume)
-                    hacker.resumeURL = await upload.ref.getDownloadURL()
+                    upload.ref.getDownloadURL().then(function (downloadURL) {
+                        hacker.resumeURL = downloadURL
+                    })
                 }
 
                 try {
@@ -209,20 +208,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.error(e)
                     alert('There was an error finishing your registration. Please try again later.')
                 }
-            },
-            async sendEmail(event) {
-                const newContact = {
-                    name: event.target.name.value,
-                    fromEmail: event.target.email.value,
-                    message: event.target.message.value 
-                }
-                
-                firebase.firestore().collection('contact').add(newContact)
-                alert('Your message has been sent!')
-
-                event.target.name.value = ''
-                event.target.email.value = ''
-                event.target.message.value = ''
             },
 
         }
