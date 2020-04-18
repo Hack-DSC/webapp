@@ -16,6 +16,9 @@ service cloud.firestore {
     match /sponsors/{sponsorID} {
       allow read;
     }
+    match /resources/{resourceID} {
+      allow read;
+    }
 
     match /hackers/{hackerID} {
       allow create;
