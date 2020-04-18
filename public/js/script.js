@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             events: [],
             team: [],
             sponsors: [],
+            resources: [],
             scheduleDay: 1,
             selectedEvent: null,
             scheduleScrollTimeout: null
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
             events: firebase.firestore().collection('events'),
             team: firebase.firestore().collection('team'),
             sponsors: firebase.firestore().collection('sponsors'),
+            resources: firebase.firestore().collection('resources'),
         },
         mounted() {
             firebase.auth().onAuthStateChanged(user => {

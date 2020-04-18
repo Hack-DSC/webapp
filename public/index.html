@@ -93,6 +93,16 @@
             <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent.show">
               <a class="nav-link" href="#team">Team</a>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="resources-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Resources
+              </a>
+              <div class="dropdown-menu" aria-labelledby="resources-dropdown">
+                <div v-for="resource in resources" :key="resource.id">
+                  <a :href="resource.url" class="dropdown-item" target="_blank">{{ resource.title }}</a>
+                </div>
+              </div>
+            </li>
             <li class="nav-item mr-3" data-toggle="collapse" data-target="#navbarSupportedContent.show">
               <a class="nav-link" href="#contact">Contact</a>
             </li>
