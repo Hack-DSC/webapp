@@ -11,6 +11,12 @@
     "name": "balsamiq"
   },
   {
+    "url": "https://wolfram.com/",
+    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/Hackathon%20Logo%20Wolfram%202020%20Vector.svg?alt=media&token=519141e0-29b1-417a-afc8-7a14ede8961b",
+    "maxWidth": "80%",
+    "name": "Wolfram"
+  },
+  {
     "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/voice_flow.png?alt=media&token=261f4ca8-2faa-4f70-b8a9-f95e1763af65",
     "url": "https://www.voiceflow.com/",
     "maxWidth": "80%",
