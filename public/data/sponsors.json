@@ -21,5 +21,11 @@
     "url": "https://www.voiceflow.com/",
     "maxWidth": "80%",
     "name": "Voiceflow"
+  },
+  {
+    "name": "Cloudsploit",
+    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/cloudsploit_by_aqua_A02.png?alt=media&token=ff57480a-67b4-44e2-9da5-97e3036010f5",
+    "maxWidth": "90%",
+    "url": "https://cloudsploit.com/"
   }
 ]
