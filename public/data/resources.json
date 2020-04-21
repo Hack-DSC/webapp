@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Solution Challenge Resources",
+    "url": "https://events.withgoogle.com/dsc-solution-challenge/resources/#content"
+  },
+  {
+    "title": "Git Cheat Sheet",
+    "url": "https://education.github.com/git-cheat-sheet-education.pdf"
+  },
+  {
+    "title": "An Introduction to Google Cloud",
+    "url": "https://youtu.be/JtUIQz_EkUw"
+  },
+  {
+    "title": "MLH Flask Python Starter Kit",
+    "url": "https://github.com/MLH/mlh-hackathon-flask-starter"
+  },
+  {
+    "title": "MLH Node.js JavaScript Starter Kit",
+    "url": "https://github.com/MLH/mlh-hackathon-nodejs-starter"
+  }
+]

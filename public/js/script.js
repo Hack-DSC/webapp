@@ -29,9 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
             events: firebase.firestore().collection('events'),
             team: firebase.firestore().collection('team'),
             sponsors: firebase.firestore().collection('sponsors'),
-            resources: firebase.firestore().collection('resources'),
         },
         mounted() {
+            this.fetchData()
+
             firebase.auth().onAuthStateChanged(user => {
                 this.user = user
                 if (user) {
@@ -85,6 +86,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         },
         methods: {
+            async fetchData () {
+                const response = await fetch('/data/resources.json')
+                this.resources = await response.json()
+            },
             updateCountDown() {
                 let distance = dayjs('2020-04-25T01:00:00.000Z').diff(new Date(), 'milliseconds')
                 this.countdown.days = Math.floor(distance / (1000 * 60 * 60 * 24))
