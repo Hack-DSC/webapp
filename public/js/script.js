@@ -29,7 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
             sponsors: firebase.firestore().collection('sponsors'),
         },
         mounted() {
-            this.fetchData()
+            try {
+                Promise.allSettled(['faqs', 'team', 'sponsors', 'resources'].map(c => this.fetchData(c)))
+            } catch (e) {
+                Promise.all(['faqs', 'team', 'sponsors', 'resources'].map(c => this.fetchData(c)))
+            }
 
             firebase.auth().onAuthStateChanged(user => {
                 this.user = user
@@ -84,26 +88,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         },
         methods: {
-            async fetchData () {
+            async fetchData (collection) {
                 try {
-                    const response = await fetch('/data/resources.json')
-                    this.resources = await response.json()
+                    const response = await fetch(`/data/${collection}.json`)
+                    this[collection] = await response.json()
                 } catch (e) {
-                    alert('There was an issue getting the hacker resources.')
-                }
-
-                try {
-                    const response = await fetch('/data/team.json')
-                    this.team = await response.json()
-                } catch (e) {
-                    alert('There was an issue getting the team.')
-                }
-                
-                try {
-                    const response = await fetch('/data/faqs.json')
-                    this.faqs = await response.json()
-                } catch (e) {
-                    alert('There was an issue getting the FAQs.')
+                    alert(`There was an issue getting the ${collection}.`)
                 }
             },
             updateCountDown() {

@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Google Cloud",
+    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/gcloud-approved-logo.png?alt=media&token=cf0da302-d682-45cb-ad31-64620457b58a",
+    "url": "https://cloud.google.com/"
+  },
+  {
+    "url": "https://balsamiq.com/",
+    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/balsamiq-logo-noborder-screen.png?alt=media&token=c3659e58-f84f-410b-9869-f3ab5034fc98",
+    "maxWidth": "80%",
+    "name": "balsamiq"
+  },
+  {
+    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/voice_flow.png?alt=media&token=261f4ca8-2faa-4f70-b8a9-f95e1763af65",
+    "url": "https://www.voiceflow.com/",
+    "maxWidth": "80%",
+    "name": "Voiceflow"
+  }
+]

@@ -390,7 +390,7 @@
             <div class="card p-3 p-md-4 p-lg-5">
               <h1>Sponsors</h1>
               <div class="row mt-2 align-items-center" v-if="sponsors.length > 0">
-                <div v-for="sponsor in sponsors" :key="sponsor.id" class="col-12 col-lg-6 mt-4 mt-lg-0 text-center">
+                <div v-for="sponsor in sponsors" :key="sponsor.name" class="col-12 col-lg-6 mt-4 mt-lg-0 text-center">
                   <a :href="sponsor.url" target="_blank">
                     <img :src="sponsor.logoURL" :title="sponsor.name" :alt="sponsor.name + '\'s logo'"
                       :style="{ maxWidth: sponsor.maxWidth ? sponsor.maxWidth : 'auto' }"
@@ -423,7 +423,7 @@
               <h1>Team</h1>
 
               <div class="row">
-                <div v-for="member in team" :key="member.id" class="col col-md-4 text-center">
+                <div v-for="member in team" :key="member.name" class="col col-md-4 text-center">
                   <a :href="member.personalUrl" class="text-dark text-decoration-none team-member" target="_blank">
                     <img :src="member.profileImageUrl" :alt="member.name + '\'s profile image'"
                       class="img-thumbnail rounded-circle team-member-image">
