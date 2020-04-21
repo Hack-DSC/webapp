@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
         firestore: {
             faqs: firebase.firestore().collection('faqs'),
             events: firebase.firestore().collection('events'),
-            team: firebase.firestore().collection('team'),
             sponsors: firebase.firestore().collection('sponsors'),
         },
         mounted() {
@@ -50,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     try {
                         this.$unbind('hacker')
                     } catch (e) {
-
+                        console.error('Could not unbind hacker')
                     }
                     console.log('Is logged out')
                 }
@@ -87,8 +86,19 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         methods: {
             async fetchData () {
-                const response = await fetch('/data/resources.json')
-                this.resources = await response.json()
+                try {
+                    const response = await fetch('/data/resources.json')
+                    this.resources = await response.json()
+                } catch (e) {
+                    alert('There was an issue getting the hacker resources.')
+                }
+
+                try {
+                    const response = await fetch('/data/team.json')
+                    this.team = await response.json()
+                } catch (e) {
+                    alert('There was an issue getting the team.')
+                }
             },
             updateCountDown() {
                 let distance = dayjs('2020-04-25T01:00:00.000Z').diff(new Date(), 'milliseconds')
