@@ -1,0 +1,30 @@
+[
+  {
+    "question": "How much does the event cost?",
+    "answer": "The event is 100% free to attend, all we need from you is your ideas, time, and passion."
+  },
+  {
+    "question": "Do I need to be in a DSC?",
+    "answer": "Nope! But we encourage you to join one or start your own!"
+  },
+  {
+    "question": "What's a Hackathon?",
+    "answer": "A hackathon is an event where students create tech projects in a collaborative environment. Students begin with an idea and work towards a complete project over the course of 24-72 hours."
+  },
+  {
+    "question": "Code of Conduct?",
+    "answer": "All participants of our event must follow the <a target='_blank' href='https://static.mlh.io/docs/mlh-code-of-conduct.pdf'>MLH Code of Conduct</a>."
+  },
+  {
+    "question": "Who can join?",
+    "answer": "This event is targeted to university or college students, but any student is welcome to participate!"
+  },
+  {
+    "question": "How will winners receive their prizes?",
+    "answer": "We will collect the shipping info for every winner and have the prizes shipped directly to them."
+  },
+  {
+    "question": "What platforms are we using?",
+    "answer": "We'll be using Youtube Live for our talks and speeches, and discord for the main hackathon."
+  }
+]

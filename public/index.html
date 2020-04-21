@@ -98,7 +98,7 @@
                 Resources
               </a>
               <div class="dropdown-menu" aria-labelledby="resources-dropdown">
-                <div v-for="resource in resources" :key="resource.id">
+                <div v-for="(resource, index) in resources" :key="index">
                   <a :href="resource.url" class="dropdown-item" target="_blank">{{ resource.title }}</a>
                 </div>
               </div>
@@ -468,7 +468,6 @@
             </div>
           </div>
         </section>
-        -->
       </div>
     </main>
     <footer class="footer text-white text-center p-5">

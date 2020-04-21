@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
             scheduleScrollTimeout: null
         },
         firestore: {
-            faqs: firebase.firestore().collection('faqs'),
             events: firebase.firestore().collection('events'),
             sponsors: firebase.firestore().collection('sponsors'),
         },
@@ -98,6 +97,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     this.team = await response.json()
                 } catch (e) {
                     alert('There was an issue getting the team.')
+                }
+                
+                try {
+                    const response = await fetch('/data/faqs.json')
+                    this.faqs = await response.json()
+                } catch (e) {
+                    alert('There was an issue getting the FAQs.')
                 }
             },
             updateCountDown() {
