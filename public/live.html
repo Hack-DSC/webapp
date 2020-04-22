@@ -79,6 +79,12 @@
         <section id="resources" class="mb-5">
           <div class="container">
             <h1 class="title">Resources</h1>
+            <div class="list-group">
+              <a v-for="(resource, index) in resources" :key="index" :href="resource.url" target="_blank" class="list-group-item list-group-item-action">
+                <i class="fas fa-link"></i>
+                {{ resource.title }}
+              </a>
+            </div>
           </div>
         </section>
         <section id="schedule" class="mb-5">
