@@ -25,8 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
             scheduleScrollTimeout: null
         },
         firestore: {
-            events: firebase.firestore().collection('events'),
-            sponsors: firebase.firestore().collection('sponsors'),
+            events: firebase.firestore().collection('events')
         },
         mounted() {
             try {

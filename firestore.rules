@@ -4,22 +4,12 @@ service cloud.firestore {
     match /contact/{contactID} {
       allow create;
     }
-    match /faqs/{faqID} {
-      allow read;
-    }
     match /events/{eventID} {
       allow read;
     }
-    match /team/{teamMemberID} {
+    match /announcements/{announcementID} {
       allow read;
     }
-    match /sponsors/{sponsorID} {
-      allow read;
-    }
-    match /resources/{resourceID} {
-      allow read;
-    }
-
     match /hackers/{hackerID} {
       allow create;
       allow read, update, delete: if request.auth.uid == hackerID;
