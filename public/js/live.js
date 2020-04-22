@@ -11,16 +11,17 @@ document.addEventListener('DOMContentLoaded', function () {
             events: [],
             sponsors: [],
             resources: [],
+            announcements: [],
             scheduleDay: 1,
             selectedEvent: null,
             scheduleScrollTimeout: null
         },
         firestore: {
             events: firebase.firestore().collection('events'),
-            sponsors: firebase.firestore().collection('sponsors'),
+            announcements: firebase.firestore().collection('announcements'),
         },
         mounted() {
-            
+            Promise.allSettled(['sponsors', 'resources'].map(c => this.fetchData(c)))
         },
         watch: {
             
@@ -29,7 +30,14 @@ document.addEventListener('DOMContentLoaded', function () {
             
         },
         methods: {
-
+            async fetchData (collection) {
+                try {
+                    const response = await fetch(`/data/${collection}.json`)
+                    this[collection] = await response.json()
+                } catch (e) {
+                    alert(`There was an issue getting the ${collection}.`)
+                }
+            },
         }
     })
 })

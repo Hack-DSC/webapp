@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>HackDSC Live</title>
+  <title>Live | HackDSC</title>
 
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
@@ -45,38 +45,48 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="100">
   <div id="live">
-
-    <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:absolute;right:35px;top:65px;width:10%;z-index:1" href="https://mlh.io/seasons/na-2020/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2020-season&utm_content=white" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2020/mlh-trust-badge-2020-white.svg" alt="Major League Hacking 2020 Hackathon Season" style="width:100%"></a>
-
     <div class="d-flex">
       <aside class="sidebar bg-dark text-white">
-        <img src="/img/hackdsc_white.png" alt="" class="logo p-4" width="100%">
-        <nav class="nav flex-column">
-          <a class="nav-link" href="#updates">Updates</a>
-          <a class="nav-link" href="#resources">Resources</a>
-          <a class="nav-link" href="#schedule">Schedule</a>
-          <a class="nav-link" href="#stream">Stream</a>
-          <a class="nav-link" href="#sponsors">Sponsors</a>
-          <a class="nav-link" href="#" target="_blank">Request Mentor</a>
-        </nav>
+        <div class="holder" style="position: sticky; top: 10px;">
+          <img src="/img/hackdsc_white.png" alt="" class="logo px-4 pt-4 pb-0" width="100%">
+          <p class="text-center mb-3"><strong>LIVE</strong></p>
+          <nav class="nav flex-column">
+            <a class="nav-link" href="#updates">Updates</a>
+            <a class="nav-link" href="#resources">Resources</a>
+            <a class="nav-link" href="#schedule">Schedule</a>
+            <a class="nav-link" href="#stream">Stream</a>
+            <a class="nav-link" href="#sponsors">Sponsors</a>
+            <a class="nav-link" href="#" target="_blank">Request Mentor</a>
+          </nav>
+        </div>
       </aside>
       <main class="flex-grow-1 py-4">
-        <section id="updates">
+        <section id="updates" class="mb-5">
           <div class="container">
-            <h1 class="title">Updates/Announcements</h1>
+            <h1 class="title mb-2">Updates/Announcements</h1>
+
+            <div class="list-group">
+              <div v-for="announcement in announcements" :key="announcement.id" class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{ announcement.title }}</h5>
+                  <small>-- ago</small>
+                </div>
+                <p class="mb-1" v-html="announcement.description"></p>
+              </div>
+            </div>
           </div>
         </section>
-        <section id="resources">
+        <section id="resources" class="mb-5">
           <div class="container">
             <h1 class="title">Resources</h1>
           </div>
         </section>
-        <section id="schedule">
+        <section id="schedule" class="mb-5">
           <div class="container">
             <h1 class="title">Schedule</h1>
           </div>
         </section>
-        <section id="stream">
+        <section id="stream" class="mb-5">
           <div class="container">
             <h1 class="title">Our Live Stream</h1>
             <iframe
@@ -129,6 +139,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/2.2.2/vuefire.min.js"></script>
+  <script src="/js/live.js"></script>
 </body>
 
 </html>
