@@ -18,7 +18,8 @@
     "redirects": [
       {
         "source": "/live",
-        "destination": "live.html"
+        "destination": "live.html",
+        "type": 301
       },
       {
         "source": "/mentor",
