@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>HackDSC Live</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/7.14.0/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/7.14.0/firebase-firestore.js"></script>
+  <script defer src="/__/firebase/7.14.0/firebase-analytics.js"></script>
+  <script defer src="/__/firebase/7.14.0/firebase-storage.js"></script>
+  <script defer src="/__/firebase/7.14.0/firebase-auth.js"></script>
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Product+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.23/dayjs.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/live.css">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="100">
+  <div id="live">
+
+    <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:absolute;right:35px;top:65px;width:10%;z-index:1" href="https://mlh.io/seasons/na-2020/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2020-season&utm_content=white" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2020/mlh-trust-badge-2020-white.svg" alt="Major League Hacking 2020 Hackathon Season" style="width:100%"></a>
+
+    <div class="d-flex">
+      <aside class="sidebar bg-dark text-white">
+        <img src="/img/hackdsc_white.png" alt="" class="logo p-4" width="100%">
+        <nav class="nav flex-column">
+          <a class="nav-link" href="#updates">Updates</a>
+          <a class="nav-link" href="#resources">Resources</a>
+          <a class="nav-link" href="#schedule">Schedule</a>
+          <a class="nav-link" href="#stream">Stream</a>
+          <a class="nav-link" href="#sponsors">Sponsors</a>
+          <a class="nav-link" href="#" target="_blank">Request Mentor</a>
+        </nav>
+      </aside>
+      <main class="flex-grow-1 py-4">
+        <section id="updates">
+          <div class="container">
+            <h1 class="title">Updates/Announcements</h1>
+          </div>
+        </section>
+        <section id="resources">
+          <div class="container">
+            <h1 class="title">Resources</h1>
+          </div>
+        </section>
+        <section id="schedule">
+          <div class="container">
+            <h1 class="title">Schedule</h1>
+          </div>
+        </section>
+        <section id="stream">
+          <div class="container">
+            <h1 class="title">Our Live Stream</h1>
+            <iframe
+              src="https://player.twitch.tv/?channel=drdisrespect&parent=hackdsc.com"
+              height="480"
+              width="640"
+              scrolling="no"
+              allowfullscreen="true">
+            </iframe>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer class="footer text-white text-center p-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col col-md-4">
+            <a href="https://www.linkedin.com/company/hackdsc/" style="padding-right: 0.6em">
+            <i class="fab fa-linkedin" style="font-size: 2em;"></i>
+            </a>
+            <a href="https://instagram.com/hack_dsc/" style="padding-right: 0.6em">
+            <i class="fab fa-instagram" style="font-size: 2em;"></i>
+            </a>
+            <a href="https://www.facebook.com/hackDSC/" style="padding-right: 0.6em">
+            <i class="fab fa-facebook" style="font-size: 2em;"></i>
+            </a>
+            <a href="https://twitter.com/hackdsc" style="padding-right: 0.6em">
+            <i class="fab fa-twitter" style="font-size: 2em;"></i>
+            </a>
+            <a href="https://www.eventbrite.com/e/hack-dsc-virtual-hackathon-tickets-102396590960">
+            <i class="far fa-calendar-alt" style="font-size: 2em;"></i>
+            </a>
+          </div>
+          <div class="col col-md-4 my-3 my-md-0">
+            <a href="#">
+              <img src="/img/hackdsc_white.png" alt="White variation of HackDSC" height="40" align="middle">
+            </a>
+          </div>
+          <div class="col col-md-4">
+            <span>Copyright © HackDSC 2020</span>
+            <br>
+            <br>
+            <span>Developed with <i class="fas fa-heart text-primary"></i> by the HackDSC
+              team</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/2.2.2/vuefire.min.js"></script>
+</body>
+
+</html>
