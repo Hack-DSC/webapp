@@ -17,6 +17,10 @@
     ],
     "redirects": [
       {
+        "source": "/live",
+        "destination": "live.html"
+      },
+      {
         "source": "/mentor",
         "destination": "https://forms.gle/8wLRzpisSGZDLhVW6",
         "type": 301
