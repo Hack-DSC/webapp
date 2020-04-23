@@ -158,6 +158,15 @@
           <div class="container">
             <h1 class="title">Sponsors</h1>
             
+            <div class="row">
+              <div class="col-12 col-md-6" v-for="(sponsor, index) in sponsors" :key="index">
+                <div class="sponsor card my-2 p-3 text-center">
+                  <a :href="sponsor.url" :title="sponsor.name" target="_blank">
+                    <img :src="sponsor.logoURL" :alt="sponsor.name + '\'s logo'" :style="{ 'width': sponsor.maxWidth || '100%' }">
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
