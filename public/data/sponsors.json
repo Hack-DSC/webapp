@@ -5,6 +5,18 @@
     "url": "https://cloud.google.com/"
   },
   {
+    "url": "https://www.agora.io/en/",
+    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/Agora-blue-logo%20(1)-1.png?alt=media&token=ae26d409-2166-4e6b-bdfe-e2ef29602cde",
+    "maxWidth": "80%",
+    "name": "Agora.IO"
+  },
+  {
+    "url": "https://www.1517fund.com/",
+    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/1517-logo-whitetxt-blackbg.svg?alt=media&token=40f85461-5b3a-422b-8b7e-6f6fc7520767",
+    "maxWidth": "80%",
+    "name": "1517 Fund"
+  },
+  {
     "url": "https://balsamiq.com/",
     "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/balsamiq-logo-noborder-screen.png?alt=media&token=c3659e58-f84f-410b-9869-f3ab5034fc98",
     "maxWidth": "80%",
