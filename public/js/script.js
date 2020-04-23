@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             events: [],
             team: [],
             sponsors: [],
+            partners: [],
             resources: [],
             scheduleDay: 1,
             selectedEvent: null,
@@ -29,9 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         mounted() {
             try {
-                Promise.allSettled(['faqs', 'team', 'sponsors', 'resources'].map(c => this.fetchData(c)))
+                Promise.allSettled(['faqs', 'team', 'sponsors', 'resources', 'partners'].map(c => this.fetchData(c)))
             } catch (e) {
-                Promise.all(['faqs', 'team', 'sponsors', 'resources'].map(c => this.fetchData(c)))
+                Promise.all(['faqs', 'team', 'sponsors', 'resources', 'partners'].map(c => this.fetchData(c)))
             }
 
             firebase.auth().onAuthStateChanged(user => {
