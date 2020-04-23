@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             sortedEvents () {
                 return this.events.sort((a, b) => a.start.toDate() - b.start.toDate())
+            },
+            recentAnnouncements () {
+                return this.announcements.reverse().slice(0, 4);
             }
         },
         methods: {

@@ -1,3 +1,16 @@
 .sidebar {
   max-width: 300px;
 }
+
+.announcement-list-group-item:nth-child(1n) {
+  border-left: 6px solid var(--primary);
+}
+.announcement-list-group-item:nth-child(2n) {
+  border-left: 6px solid var(--danger);
+}
+.announcement-list-group-item:nth-child(3n) {
+  border-left: 6px solid var(--warning);
+}
+.announcement-list-group-item:nth-child(4n) {
+  border-left: 6px solid var(--success);
+}
