@@ -1,3 +1,13 @@
 [
-  
+  {
+    "name": "Major League Hacking",
+    "url": "https://mlh.io/",
+    "logoURL": "https://static.mlh.io/brand-assets/logo/official/mlh-logo-color.png",
+    "maxWidth": "80%"
+  },
+  {
+    "name": "SacHacks",
+    "url": "https://sachacks.io/",
+    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/sachacks.png?alt=media&token=9df59d1a-83a3-4454-9687-87bcc3005309"
+  }
 ]

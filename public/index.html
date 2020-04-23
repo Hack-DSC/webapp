@@ -409,10 +409,10 @@
             <div class="card p-3 p-md-4 p-lg-5">
               <h1>Partners</h1>
               <div class="row mt-2 align-items-center" v-if="partners.length > 0">
-                <div v-for="partners in sponsors" :key="partners.name" class="col-12 col-lg-6 mt-4 text-center">
-                  <a :href="partners.url" target="_blank">
-                    <img :src="sponsor.logoURL" :title="partners.name" :alt="partners.name + '\'s logo'"
-                      :style="{ maxWidth: partners.maxWidth ? partners.maxWidth : 'auto' }"
+                <div v-for="partner in partners" :key="partner.name" class="col-12 col-lg-6 mt-4 text-center">
+                  <a :href="partner.url" target="_blank">
+                    <img :src="partner.logoURL" :title="partner.name" :alt="partner.name + '\'s logo'"
+                      :style="{ maxWidth: partner.maxWidth ? partner.maxWidth : 'auto' }"
                       class="partners-image w-100">
                   </a>
                 </div>
