@@ -1,5 +1,9 @@
 [
   {
+    "question": "Where can we find details during the event?",
+    "answer": "View the <a href='/live'>Live Site</a>!"
+  },
+  {
     "question": "How much does the event cost?",
     "answer": "The event is 100% free to attend, all we need from you is your ideas, time, and passion."
   },
@@ -25,6 +29,10 @@
   },
   {
     "question": "What platforms are we using?",
-    "answer": "We'll be using Youtube Live for our talks and speeches, and discord for the main hackathon."
+    "answer": "We'll be using Twitch for our talks and speeches, and Discord for the main hackathon. These are on the <a href='/live'>Live Site</a>."
+  },
+  {
+    "question": "What's the max team size?",
+    "answer": "Teams can have a maximum of <strong>4</strong> members."
   }
 ]
