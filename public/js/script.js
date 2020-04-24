@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     $('#registration-modal').modal('show')
                 } else {
                     $('#registration-modal').modal('hide')
-                    window.location = '/live' // REDIRECT TO LIVE
                 }
             }
         },
@@ -217,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         displayName
                     })
                     await firebase.firestore().collection('hackers').doc(this.user.uid).set(hacker)
-
+                    window.location = '/live'
                     $('#registration-modal').modal('hide')
                 } catch (e) {
                     console.error(e)
