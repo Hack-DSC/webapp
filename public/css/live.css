@@ -18,3 +18,15 @@
 #live-countdown {
   margin-top: -1.5rem;
 }
+
+#prizes [class*='col']:first-child .card {
+  border-bottom: 6px solid var(--green);
+}
+
+#prizes [class*='col']:nth-child(2) .card {
+  border-bottom: 6px solid var(--red);
+}
+
+#prizes [class*='col']:last-child .card {
+  border-bottom: 6px solid var(--blue);
+}

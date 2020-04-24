@@ -55,11 +55,13 @@
             <form id="request-mentor-form" @submit.prevent="submitMentorHelp">
               <div class="form-group">
                 <label for="request-mentor-discord">Your Discord</label>
-                <input v-model.trim="requestMentor.discord" type="text" class="form-control" id="request-mentor-discord" minlength="1" maxlength="300" placeholder="@Name#0001" required>
+                <input v-model.trim="requestMentor.discord" type="text" class="form-control" id="request-mentor-discord"
+                  minlength="1" maxlength="300" placeholder="@Name#0001" required>
               </div>
               <div class="form-group">
                 <label for="request-mentor-discord-help">What do you need help with?</label>
-                <textarea v-model.trim="requestMentor.help" class="form-control" id="request-mentor-discord-help" rows="3" required></textarea>
+                <textarea v-model.trim="requestMentor.help" class="form-control" id="request-mentor-discord-help"
+                  rows="3" required></textarea>
               </div>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button class="btn btn-primary">Submit Request</button>
@@ -74,7 +76,7 @@
         <div class="holder" style="position: sticky; top: 10px;">
           <img src="/img/hackdsc_white.png" alt="" class="logo px-4 pt-4 pb-0" width="100%">
           <p class="text-center mb-3"><strong>LIVE</strong></p>
-          <nav class="nav flex-column"  id="sidebar-nav">
+          <nav class="nav flex-column" id="sidebar-nav">
             <p v-if="user" class="nav-link disabled">{{ user.displayName }}</p>
             <a class="nav-link" href="#updates">Updates</a>
             <a class="nav-link" href="#resources">Resources</a>
@@ -99,10 +101,12 @@
             <h1 class="title mb-2">Updates/Announcements</h1>
 
             <div class="list-group">
-              <div v-for="(announcement, index) in recentAnnouncements" :key="index" class="list-group-item announcement-list-group-item">
+              <div v-for="(announcement, index) in recentAnnouncements" :key="index"
+                class="list-group-item announcement-list-group-item">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">{{ announcement.title }}</h5>
-                  <small class="text-secondary" :title="formatTimestampDate(announcement.postedAt)">posted {{ formatTimestamp(announcement.postedAt) }}</small>
+                  <small class="text-secondary" :title="formatTimestampDate(announcement.postedAt)">posted
+                    {{ formatTimestamp(announcement.postedAt) }}</small>
                 </div>
                 <p class="mb-1" v-html="announcement.description"></p>
               </div>
@@ -116,7 +120,8 @@
           <div class="container">
             <h1 class="title">Resources</h1>
             <div class="list-group">
-              <a v-for="(resource, index) in resources" :key="index" :href="resource.url" target="_blank" class="list-group-item list-group-item-action">
+              <a v-for="(resource, index) in resources" :key="index" :href="resource.url" target="_blank"
+                class="list-group-item list-group-item-action">
                 <h5 class="m-0"><i class="fas fa-link"></i> {{ resource.title }}</h5>
                 <p v-if="resource.description" class="mb-1" v-html="resource.description"></p>
               </a>
@@ -174,18 +179,15 @@
             <div class="row">
               <div class="col-12 col-md-7">
                 <h1 class="title">Our Live Stream</h1>
-                
-                <iframe
-                  src="https://player.twitch.tv/?channel=hackdsc&parent=hackdsc.com"
-                  height="480"
-                  width="100%"
-                  scrolling="no"
-                  allowfullscreen="true">
+
+                <iframe src="https://player.twitch.tv/?channel=hackdsc&parent=hackdsc.com" height="480" width="100%"
+                  scrolling="no" allowfullscreen="true">
                 </iframe>
               </div>
               <div class="col-12 col-md-5">
                 <h1 class="title">Our Server</h1>
-                <iframe src="https://discordapp.com/widget?id=699008878716780544&theme=dark" width="100%" height="480" allowtransparency="true" frameborder="0"></iframe>
+                <iframe src="https://discordapp.com/widget?id=699008878716780544&theme=dark" width="100%" height="480"
+                  allowtransparency="true" frameborder="0"></iframe>
               </div>
             </div>
           </div>
@@ -193,12 +195,13 @@
         <section id="sponsors" class="mb-5">
           <div class="container">
             <h1 class="title">Sponsors</h1>
-            
+
             <div class="row">
               <div class="col-12 col-md-6" v-for="(sponsor, index) in sponsors" :key="index">
                 <div class="sponsor card my-2 p-3 text-center">
                   <a :href="sponsor.url" :title="sponsor.name" target="_blank">
-                    <img :src="sponsor.logoURL" :alt="sponsor.name + '\'s logo'" :style="{ 'width': sponsor.maxWidth || '100%' }">
+                    <img :src="sponsor.logoURL" :alt="sponsor.name + '\'s logo'"
+                      :style="{ 'width': sponsor.maxWidth || '100%' }">
                   </a>
                 </div>
               </div>
@@ -208,10 +211,14 @@
         <section id="prizes" class="mb-5">
           <div class="container">
             <h1 class="title">Prizes</h1>
-            
+
             <p class="text-center">
-              <img src="https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/prizes.png?alt=media&token=3ad486c3-ba30-414d-8c67-48ebc0272733" alt="Prize tiers">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/prizes.png?alt=media&token=3ad486c3-ba30-414d-8c67-48ebc0272733"
+                alt="Prize tiers">
             </p>
+
+            <h2 class="subtitle text-center mt-4">Overall</h2>
             <div class="row">
               <div class="col">
                 <div class="card">
@@ -232,7 +239,8 @@
                     <h2 class="subtitle text-center">1st Place</h2>
                     <p>
                       <ul>
-                        <li><abbr title="Nest Mini, Patagonia Backpack, Trophy, Cloud Pillow, Cloud Waterbottle">Google Prize Pack</abbr></li>
+                        <li><abbr title="Nest Mini, Patagonia Backpack, Trophy, Cloud Pillow, Cloud Waterbottle">Google
+                            Prize Pack</abbr></li>
                         <li>1 on 1 Time with Googler</li>
                         <li>$100 per team member</li>
                       </ul>
@@ -254,6 +262,104 @@
                 </div>
               </div>
             </div>
+
+            <h2 class="subtitle text-center mt-4">Accessibility, Healthcare, and Education</h2>
+            <div class="row">
+              <div class="col">
+                <div class="card">
+                  <div class="card-body py-3 px-1">
+                    <h2 class="subtitle text-center">2nd Place</h2>
+                    <p>
+                      <ul>
+                        <li><abbr title="Oakley Backpack, Nest Mini, T-Shirt, Waterbottle">DSC Prize Pack</abbr></li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-body py-3 px-1">
+                    <h2 class="subtitle text-center">1st Place</h2>
+                    <p>
+                      <ul>
+                        <li><abbr title="Nest Mini, Patagonia Backpack, Trophy, Cloud Pillow, Cloud Waterbottle">Google
+                            Prize Pack</abbr></li>
+                        <li>1 on 1 Time with Googler</li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-body py-3 px-1">
+                    <h2 class="subtitle text-center">3rd Place</h2>
+                    <p>
+                      <ul>
+                        <li>Nest Mini</li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <h2 class="subtitle text-center mt-4">Sponsors</h2>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="card">
+                  <div class="card-body py-3 px-2">
+                    <h2 class="subtitle text-center">MLH</h2>
+                    <p>
+                      <ul>
+                        <li>UI Path: UI Path Backpack</li>
+                        <li>Best use of GCP: Nest Mini</li>
+                        <li>Blockstack: BeatsX</li>
+                        <li>Mongo Atlas: AirCharge Plus</li>
+                        <li>Radar.io: Tile Smart Sticker</li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              
+              <div class="col-12 col-md-6">
+                <div class="card">
+                  <div class="card-body py-3 px-2">
+                    <h2 class="subtitle text-center">1517 Fund</h2>
+                    <h5 class="lead text-center">Most Entrepreneurial Hack</h5>
+                    <p>
+                      <ul>
+                        <li>$1000 (Split between team)</li>
+                        <li>$10000 of Infrastructure Costs</li>
+                        <li>Startup Mentorship & Grants</li>
+                      </ul>
+                      <small>*Teams must be interested in 
+                        continuing their hack post event</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <div class="card">
+                  <div class="card-body py-3 px-2">
+                    <h2 class="subtitle text-center">Agora</h2>
+                    <h5 class="lead text-center">Best of use of Agora SDK</h5>
+                    <p>
+                      <ul>
+                        <li>$500 (split amongst team)</li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
             <small>*We are not able to ship prizes internationally</small>
           </div>
         </section>
@@ -265,19 +371,19 @@
         <div class="row align-items-center">
           <div class="col col-md-4">
             <a href="https://www.linkedin.com/company/hackdsc/" style="padding-right: 0.6em">
-            <i class="fab fa-linkedin" style="font-size: 2em;"></i>
+              <i class="fab fa-linkedin" style="font-size: 2em;"></i>
             </a>
             <a href="https://instagram.com/hack_dsc/" style="padding-right: 0.6em">
-            <i class="fab fa-instagram" style="font-size: 2em;"></i>
+              <i class="fab fa-instagram" style="font-size: 2em;"></i>
             </a>
             <a href="https://www.facebook.com/hackDSC/" style="padding-right: 0.6em">
-            <i class="fab fa-facebook" style="font-size: 2em;"></i>
+              <i class="fab fa-facebook" style="font-size: 2em;"></i>
             </a>
             <a href="https://twitter.com/hackdsc" style="padding-right: 0.6em">
-            <i class="fab fa-twitter" style="font-size: 2em;"></i>
+              <i class="fab fa-twitter" style="font-size: 2em;"></i>
             </a>
             <a href="https://www.eventbrite.com/e/hack-dsc-virtual-hackathon-tickets-102396590960">
-            <i class="far fa-calendar-alt" style="font-size: 2em;"></i>
+              <i class="far fa-calendar-alt" style="font-size: 2em;"></i>
             </a>
           </div>
           <div class="col col-md-4 my-3 my-md-0">
