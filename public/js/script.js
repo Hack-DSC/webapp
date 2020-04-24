@@ -44,8 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         .then(hacker => {
                             if (!hacker) {
                                 this.openRegistrationModal()
-                            } else {
-                                // window.location = '/live'
                             }
                         })
 
@@ -69,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     $('#registration-modal').modal('show')
                 } else {
                     $('#registration-modal').modal('hide')
+                    window.location = '/live' // REDIRECT TO LIVE
                 }
             }
         },
