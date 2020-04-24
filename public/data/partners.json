@@ -13,6 +13,7 @@
   {
     "name": "WinHacks",
     "url": "https://winhacks.ca/",
-    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/winhacks.png?alt=media&token=da905c46-2558-451a-af5c-43c0b519187b"
+    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/winhacks.png?alt=media&token=da905c46-2558-451a-af5c-43c0b519187b",
+    "maxWidth": "80%"
   }
 ]
