@@ -9,5 +9,10 @@
     "name": "SacHacks",
     "url": "https://sachacks.io/",
     "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/sachacks.png?alt=media&token=9df59d1a-83a3-4454-9687-87bcc3005309"
+  },
+  {
+    "name": "WinHacks",
+    "url": "https://winhacks.ca/",
+    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/winhacks.png?alt=media&token=da905c46-2558-451a-af5c-43c0b519187b"
   }
 ]
