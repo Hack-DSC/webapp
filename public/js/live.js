@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
             announcements: [],
             scheduleDay: 1,
             selectedEvent: null,
-            scheduleScrollTimeout: null
+            scheduleScrollTimeout: null,
+            now: new Date()
         },
         firestore: {
             events: firebase.firestore().collection('events'),
@@ -58,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
 
+            setInterval(() => this.now = new Date(), 1000 * 60)
             setInterval(this.updateCountDown, 1000)
             this.updateCountDown()
         },
@@ -104,6 +106,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     this[collection] = await response.json()
                 } catch (e) {
                     alert(`There was an issue getting the ${collection}.`)
+                }
+            },
+            eventTimeDisplay (event) {
+                const start = dayjs(event.start.toDate())
+                const end = (event.start.toDate())
+
+                if (dayjs(this.now).isBefore(end)) {
+                    return 'Coming up'
+                } else if (dayjs(this.now).isBetween(start, end)) {
+                    return 'In progress'
+                } else {
+                    return 'Done'
                 }
             },
             submitMentorHelp() {

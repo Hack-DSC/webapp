@@ -217,7 +217,7 @@
                           :class="'text-' + categoryClass(event.category)">{{ categoryDisplay(event.category) }}</strong>
                       </div>
                       <p class="m-0 flex-fill event-title">{{ event.title }}</p>
-                      <strong class="text-muted event-status">Coming up</strong>
+                      <strong class="text-muted event-status">{{ eventTimeDisplay(event) }}</strong>
                     </div>
                   </div>
                 </div>
