@@ -23,5 +23,13 @@
   {
     "title": "MLH Node.js JavaScript Starter Kit",
     "url": "https://github.com/MLH/mlh-hackathon-nodejs-starter"
+  },
+  {
+    "title": "Open Broadcaster Software",
+    "url": "https://obsproject.com/"
+  },
+  {
+    "title": "React Native Introduction",
+    "url": "https://reactnative.dev/docs/getting-started"
   }
 ]
