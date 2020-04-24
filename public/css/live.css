@@ -14,3 +14,7 @@
 .announcement-list-group-item:nth-child(4n) {
   border-left: 6px solid var(--success);
 }
+
+#live-countdown {
+  margin-top: -1.5rem;
+}

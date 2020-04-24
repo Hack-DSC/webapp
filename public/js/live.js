@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const app = new Vue({
         el: '#live',
         data: {
+            countdown: {
+                days: 0,
+                hours: 0,
+                minutes: 0
+            },
             user: null,
             hacker: null,
             events: [],
@@ -48,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log('Is logged out')
                 }
             })
+
+            setInterval(this.updateCountDown, 1000)
+            this.updateCountDown()
         },
         watch: {
             hacker(newHacker) {
@@ -79,6 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         },
         methods: {
+            updateCountDown() {
+                let distance = dayjs('2020-04-25T01:00:00.000Z').diff(new Date(), 'milliseconds')
+                this.countdown.days = Math.floor(distance / (1000 * 60 * 60 * 24))
+                this.countdown.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+                this.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+                this.countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000)
+            },
             async fetchData (collection) {
                 try {
                     const response = await fetch(`/data/${collection}.json`)
