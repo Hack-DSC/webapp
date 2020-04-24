@@ -45,6 +45,30 @@
 
 <body data-spy="scroll" data-target="#sidebar-nav" data-offset="50">
   <div id="live">
+    <div id="event-modal" class="modal" tabindex="-1" role="dialog">
+      <div v-if="selectedEvent" class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ selectedEvent.title }}
+              <strong
+                :class="'text-' + categoryClass(selectedEvent.category)">{{ categoryDisplay(selectedEvent.category) }}</strong>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body pt-1">
+            <small><strong>{{ formatTimestampDate(selectedEvent.start) }}</strong> |
+              {{ formatTimestamp(selectedEvent.start) }} - {{ formatTimestamp(selectedEvent.end) }}</small>
+            <p class="mt-1">{{ selectedEvent.description }}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="request-mentor-modal" class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -76,8 +100,8 @@
         <div class="holder" style="position: sticky; top: 10px;">
           <img src="/img/hackdsc_white.png" alt="" class="logo px-4 pt-4 pb-0" width="100%">
           <p class="text-center mb-3"><strong>LIVE</strong></p>
+          <p v-if="user" class="text-center text-white">Hey <span style="color: #4285f4">{{ user.displayName }}</span></p>
           <nav class="nav flex-column" id="sidebar-nav">
-            <p v-if="user" class="nav-link disabled">{{ user.displayName }}</p>
             <a class="nav-link" href="#stream">Stream and Server</a>
             <a class="nav-link" href="#updates">Updates</a>
             <a class="nav-link" href="#schedule">Schedule</a>

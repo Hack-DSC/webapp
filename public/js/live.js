@@ -116,6 +116,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.requestMentor.discord = ''
                 this.requestMentor.help = ''
             },
+            selectEvent (event) {
+                this.selectedEvent = event
+                $('#event-modal').modal('show')
+            },
             formatTimestamp(ts) {
                 return dayjs(ts.toDate()).format('h:mm a')
             },
