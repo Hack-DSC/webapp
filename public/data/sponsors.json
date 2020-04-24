@@ -23,6 +23,12 @@
     "name": "balsamiq"
   },
   {
+    "url": "https://www.joinglimpse.com/",
+    "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/glimpse(2).png?alt=media&token=febc0aaf-326f-4e3b-be9d-943ba7445531",
+    "maxWidth": "60%",
+    "name": "Glimpse"
+  },
+  {
     "url": "https://wolfram.com/",
     "logoURL": "https://firebasestorage.googleapis.com/v0/b/hack-dsc.appspot.com/o/Hackathon%20Logo%20Wolfram%202020%20Vector.svg?alt=media&token=519141e0-29b1-417a-afc8-7a14ede8961b",
     "maxWidth": "80%",
