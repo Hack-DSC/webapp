@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         firestore: {
             events: firebase.firestore().collection('events'),
-            announcements: firebase.firestore().collection('announcements'),
+            announcements: firebase.firestore().collection('announcements')
         },
         mounted() {
             Promise.allSettled(['sponsors', 'resources'].map(c => this.fetchData(c)))
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return this.events.sort((a, b) => a.start.toDate() - b.start.toDate())
             },
             recentAnnouncements () {
-                return this.announcements.reverse().slice(0, 4);
+                return this.announcements.filter(ann => !ann.test).reverse().slice(0, 4);
             }
         },
         methods: {
