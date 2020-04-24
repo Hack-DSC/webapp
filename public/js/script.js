@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         .then(hacker => {
                             if (!hacker) {
                                 this.openRegistrationModal()
+                            } else {
+                                // window.location = '/live'
                             }
                         })
 
