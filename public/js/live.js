@@ -22,11 +22,49 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         mounted() {
             Promise.allSettled(['sponsors', 'resources'].map(c => this.fetchData(c)))
+
+            firebase.auth().onAuthStateChanged(user => {
+                this.user = user
+                if (user) {
+                    console.log('Is logged in as ' + user.email)
+
+                    this.$bind('hacker', firebase.firestore().collection('hackers').doc(user.uid))
+                        .then(hacker => {
+                            if (!hacker) {
+                                alert('You have not registered yet!')
+                                window.location = '/'
+                            }
+                        })
+
+                    firebase.analytics().logEvent('login')
+                } else {
+                    alert('You have not registered yet!')
+                    window.location = '/'
+                    try {
+                        this.$unbind('hacker')
+                    } catch (e) {
+                        console.error('Could not unbind hacker')
+                    }
+                    console.log('Is logged out')
+                }
+            })
         },
         watch: {
-            
+            hacker(newHacker) {
+                if (newHacker === null) {
+                    $('#registration-modal').modal('show')
+                } else {
+                    $('#registration-modal').modal('hide')
+                }
+            }
         },
         computed: {
+            loggedIn() {
+                return this.user !== null
+            },
+            registered() {
+                return this.hacker !== null
+            },
             scheduleDayDate () {
                 return startDate.add(this.scheduleDay - 1, 'days')
             },
