@@ -135,7 +135,7 @@ body {
   position: relative;
 }
 
-footer {
+footer.custom {
   background-color: #303c42;
 }
 
