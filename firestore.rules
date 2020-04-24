@@ -1,6 +1,9 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    match /mentorRequests/{mentorRequestID} {
+      allow create;
+    }
     match /contact/{contactID} {
       allow create;
     }

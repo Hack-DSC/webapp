@@ -45,20 +45,44 @@
 
 <body data-spy="scroll" data-target="#sidebar-nav" data-offset="50">
   <div id="live">
+    <div id="request-mentor-modal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Request Mentor</h5>
+          </div>
+          <div class="modal-body">
+            <form id="request-mentor-form" @submit.prevent="submitMentorHelp">
+              <div class="form-group">
+                <label for="request-mentor-discord">Your Discord</label>
+                <input v-model.trim="requestMentor.discord" type="text" class="form-control" id="request-mentor-discord" minlength="1" maxlength="300" placeholder="@Name#0001" required>
+              </div>
+              <div class="form-group">
+                <label for="request-mentor-discord-help">What do you need help with?</label>
+                <textarea v-model.trim="requestMentor.help" class="form-control" id="request-mentor-discord-help" rows="3" required></textarea>
+              </div>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Submit Request</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <div class="d-flex">
       <aside class="sidebar bg-dark text-white">
         <div class="holder" style="position: sticky; top: 10px;">
           <img src="/img/hackdsc_white.png" alt="" class="logo px-4 pt-4 pb-0" width="100%">
           <p class="text-center mb-3"><strong>LIVE</strong></p>
           <nav class="nav flex-column"  id="sidebar-nav">
-            <p class="nav-link disabled">{{ user.displayName }}</p>
+            <p v-if="user" class="nav-link disabled">{{ user.displayName }}</p>
             <a class="nav-link" href="#updates">Updates</a>
             <a class="nav-link" href="#resources">Resources</a>
             <a class="nav-link" href="#schedule">Schedule</a>
             <a class="nav-link" href="#stream">Stream and Server</a>
             <a class="nav-link" href="#sponsors">Sponsors</a>
             <a class="nav-link" href="#prizes">Prizes</a>
-            <a class="nav-link" href="#" target="_blank">Request Mentor</a>
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#request-mentor-modal">Request Mentor</a>
           </nav>
         </div>
       </aside>

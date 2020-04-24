@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 hours: 0,
                 minutes: 0
             },
+            requestMentor: {
+                discord: '',
+                help: ''
+            },
             user: null,
             hacker: null,
             events: [],
@@ -73,16 +77,16 @@ document.addEventListener('DOMContentLoaded', function () {
             registered() {
                 return this.hacker !== null
             },
-            scheduleDayDate () {
+            scheduleDayDate() {
                 return startDate.add(this.scheduleDay - 1, 'days')
             },
-            scheduleDayDisplay () {
+            scheduleDayDisplay() {
                 return this.scheduleDayDate.format('dddd, MMMM D')
             },
-            sortedEvents () {
+            sortedEvents() {
                 return this.events.sort((a, b) => a.start.toDate() - b.start.toDate())
             },
-            recentAnnouncements () {
+            recentAnnouncements() {
                 return this.announcements.filter(ann => !ann.test).reverse().slice(0, 4);
             }
         },
@@ -94,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
                 this.countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000)
             },
-            async fetchData (collection) {
+            async fetchData(collection) {
                 try {
                     const response = await fetch(`/data/${collection}.json`)
                     this[collection] = await response.json()
@@ -102,13 +106,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert(`There was an issue getting the ${collection}.`)
                 }
             },
-            formatTimestamp (ts) {
+            submitMentorHelp() {
+                firebase.firestore().collection('mentorRequests').add(this.requestMentor)
+
+                $('#request-mentor-modal').modal('hide')
+                
+                alert('Submitted request to the mentors! You will be contacted on Discord.')
+
+                this.requestMentor.discord = ''
+                this.requestMentor.help = ''
+            },
+            formatTimestamp(ts) {
                 return dayjs(ts.toDate()).format('h:mm a')
             },
-            formatTimestampDate (ts) {
+            formatTimestampDate(ts) {
                 return dayjs(ts.toDate()).format('dddd, MMMM D')
             },
-            categoryClass (category) {
+            categoryClass(category) {
                 return {
                     main: 'danger',
                     workshop: 'primary',
@@ -116,26 +130,26 @@ document.addEventListener('DOMContentLoaded', function () {
                     misc: 'success'
                 }[category] || 'success'
             },
-            categoryDisplay (category) {
+            categoryDisplay(category) {
                 return {
                     main: 'Main Event',
                     workshop: 'Workshop',
                     judging: 'Judging'
                 }[category] || 'Event'
             },
-            debounceScheduleScroll (event) {
+            debounceScheduleScroll(event) {
                 if (this.scheduleScrollTimeout) clearTimeout(this.scheduleScrollTimeout)
                 this.scheduleScrollTimeout = setTimeout(() => this.handleScheduleScroll(event), 200)
             },
-            handleScheduleScroll (event) {
+            handleScheduleScroll(event) {
                 // Determine which day we are looking at
                 let newDay = 1
                 for (let i = 1; i <= 3; i++) {
                     const firstDayEvent = this.sortedEvents.find(event => dayjs(event.start.toDate())
                         .isSame(startDate
-                        .add(i - 1, 'days'), 'day'))
+                            .add(i - 1, 'days'), 'day'))
                     const target = document.getElementById('event-' + firstDayEvent.id)
-                    
+
                     // Are we scrolled past it??
                     if (target.parentNode.scrollTop >= (target.offsetTop - target.parentNode.offsetTop)) {
                         newDay = i
@@ -144,10 +158,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 this.scheduleDay = newDay
             },
-            scrollToScheduleDay (day) {
+            scrollToScheduleDay(day) {
                 const firstDayEvent = this.sortedEvents.find(event => dayjs(event.start.toDate())
                     .isSame(startDate
-                    .add(day - 1, 'days'), 'day'))
+                        .add(day - 1, 'days'), 'day'))
                 if (firstDayEvent) {
                     const target = document.getElementById('event-' + firstDayEvent.id)
                     target.parentNode.scrollTop = target.offsetTop - target.parentNode.offsetTop
