@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             },
             updateCountDown() {
-                let distance = dayjs('2020-04-25T01:00:00.000Z').diff(new Date(), 'milliseconds')
+                let distance = dayjs('2020-04-25T00:00:00.000Z').diff(new Date(), 'milliseconds')
                 this.countdown.days = Math.floor(distance / (1000 * 60 * 60 * 24))
                 this.countdown.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
                 this.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
