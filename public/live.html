@@ -78,12 +78,12 @@
           <p class="text-center mb-3"><strong>LIVE</strong></p>
           <nav class="nav flex-column" id="sidebar-nav">
             <p v-if="user" class="nav-link disabled">{{ user.displayName }}</p>
-            <a class="nav-link" href="#updates">Updates</a>
-            <a class="nav-link" href="#resources">Resources</a>
-            <a class="nav-link" href="#schedule">Schedule</a>
             <a class="nav-link" href="#stream">Stream and Server</a>
+            <a class="nav-link" href="#updates">Updates</a>
+            <a class="nav-link" href="#schedule">Schedule</a>
             <a class="nav-link" href="#sponsors">Sponsors</a>
             <a class="nav-link" href="#prizes">Prizes</a>
+            <a class="nav-link" href="#resources">Resources</a>
             <a class="nav-link" href="#" data-toggle="modal" data-target="#request-mentor-modal">Request Mentor</a>
           </nav>
         </div>
@@ -95,6 +95,25 @@
             {{ countdown.days }} days {{ countdown.hours }} hours {{ countdown.minutes }} min
           </h3>
         </div>
+
+        <section id="stream" class="mb-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-7">
+                <h1 class="title">Our Live Stream</h1>
+
+                <iframe src="https://player.twitch.tv/?channel=hackdsc&parent=hackdsc.com" height="480" width="100%"
+                  scrolling="no" allowfullscreen="true">
+                </iframe>
+              </div>
+              <div class="col-12 col-md-5">
+                <h1 class="title">Our Server</h1>
+                <iframe src="https://discordapp.com/widget?id=699008878716780544&theme=dark" width="100%" height="480"
+                  allowtransparency="true" frameborder="0"></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section id="updates" class="mb-5">
           <div class="container">
@@ -116,18 +135,7 @@
             </div>
           </div>
         </section>
-        <section id="resources" class="mb-5">
-          <div class="container">
-            <h1 class="title">Resources</h1>
-            <div class="list-group">
-              <a v-for="(resource, index) in resources" :key="index" :href="resource.url" target="_blank"
-                class="list-group-item list-group-item-action">
-                <h5 class="m-0"><i class="fas fa-link"></i> {{ resource.title }}</h5>
-                <p v-if="resource.description" class="mb-1" v-html="resource.description"></p>
-              </a>
-            </div>
-          </div>
-        </section>
+        
         <section id="schedule" class="mb-5">
           <div class="container">
             <h1 class="title">Schedule</h1>
@@ -174,24 +182,7 @@
             </div>
           </div>
         </section>
-        <section id="stream" class="mb-5">
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-7">
-                <h1 class="title">Our Live Stream</h1>
-
-                <iframe src="https://player.twitch.tv/?channel=hackdsc&parent=hackdsc.com" height="480" width="100%"
-                  scrolling="no" allowfullscreen="true">
-                </iframe>
-              </div>
-              <div class="col-12 col-md-5">
-                <h1 class="title">Our Server</h1>
-                <iframe src="https://discordapp.com/widget?id=699008878716780544&theme=dark" width="100%" height="480"
-                  allowtransparency="true" frameborder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </section>
+        
         <section id="sponsors" class="mb-5">
           <div class="container">
             <h1 class="title">Sponsors</h1>
@@ -392,6 +383,19 @@
             <small>You'll also have a chance to win $25 Amazon gift cards by participating in our contests and mini events!</small>
             <br>
             <small>*We are not able to ship prizes internationally</small>
+          </div>
+        </section>
+
+        <section id="resources" class="mb-5">
+          <div class="container">
+            <h1 class="title">Resources</h1>
+            <div class="list-group">
+              <a v-for="(resource, index) in resources" :key="index" :href="resource.url" target="_blank"
+                class="list-group-item list-group-item-action">
+                <h5 class="m-0"><i class="fas fa-link"></i> {{ resource.title }}</h5>
+                <p v-if="resource.description" class="mb-1" v-html="resource.description"></p>
+              </a>
+            </div>
           </div>
         </section>
 

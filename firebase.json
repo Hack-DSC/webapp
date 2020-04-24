@@ -10,17 +10,13 @@
   },
   "hosting": {
     "public": "public",
+    "cleanUrls": true,
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
     "redirects": [
-      {
-        "source": "/live",
-        "destination": "live.html",
-        "type": 301
-      },
       {
         "source": "/mentor",
         "destination": "https://forms.gle/8wLRzpisSGZDLhVW6",
