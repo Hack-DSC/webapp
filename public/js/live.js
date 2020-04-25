@@ -122,6 +122,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             },
             submitMentorHelp() {
+                const pieces = this.requestMentor.discord.split('#')
+                if (pieces.length !== 2) {
+                    alert('Make sure to include your full Discord tag, e.g. @Frank‽#0001')
+                    return
+                }
+                if (pieces[1].length !== 4) {
+                    alert('Make sure to include your full Discord tag, e.g. @Frank‽#0001')
+                    return
+                }
                 firebase.firestore().collection('mentorRequests').add(this.requestMentor)
 
                 $('#request-mentor-modal').modal('hide')
