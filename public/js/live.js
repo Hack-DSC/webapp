@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     Vue.use(Vuefire.firestorePlugin)
+    dayjs.extend(dayjs_plugin_isBetween)
 
     const startDate = dayjs('2020-04-24')
 
